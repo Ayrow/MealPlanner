@@ -16,7 +16,9 @@ struct AllPossibleMealsView: View {
                     .padding()
                 
                 ScrollView {
-                    // Here will be shown a list of all meals
+                    List {
+                        
+                    }
                 }
             }
             .navigationTitle("All Possible Meals")
