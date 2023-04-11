@@ -34,8 +34,10 @@ struct AllPossibleMealsView: View {
                 }
             }
             .sheet(isPresented: $viewModel.showAddMealSheet) {
-                AddMealView(meal: Meal(id: UUID(), name: "")){newMeal in
-                    //
+                NavigationView {
+                    AddMealView(meal: Meal(id: UUID(), name: "")){newMeal in
+                        //
+                    }
                 }
             }
         }

@@ -15,21 +15,42 @@ struct AddMealView: View {
     
     @State var name = ""
     @State var recipe = ""
-    @State var ingredients = [""]
+    @State var ingredients: [String] = [""]
     
     var body: some View {
         Form {
-            Text("Hello")
+            Section("Meal") {
+                TextField("Enter the name of a meal", text: $name)
+            }
+            Section("Recipe") {
+                TextField("Enter the full URL of the recipe", text: $recipe)
+            }
+            Section("Ingredients") {
+                ForEach(0..<ingredients.count, id:\.self) { index in
+                    TextField("Ingredient", text: self.$ingredients[index])
+                }
+                Button {
+                    self.ingredients.append("")
+                } label: {
+                    Label("Add more", systemImage: "plus.circle")
+                }
+
+            }
         }
         .toolbar {
-            Button("Save"){
-                var newMeal = meal
-                newMeal.name = name
-                newMeal.recipe = URL(string: recipe)
-                newMeal.ingredients = ingredients
-                
-                onSave(newMeal)
-                dismiss()
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Cancel"){dismiss()}
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Save"){
+                    var newMeal = meal
+                    newMeal.name = name
+                    newMeal.recipe = URL(string: recipe)
+                    newMeal.ingredients = ingredients
+                    
+                    onSave(newMeal)
+                    dismiss()
+                }
             }
         }
         .navigationTitle("Add Meal")
