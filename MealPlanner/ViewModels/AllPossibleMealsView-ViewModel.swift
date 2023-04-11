@@ -34,6 +34,11 @@ extension AllPossibleMealsView {
             }
         }
         
+        func addNewMeal(_ newMeal: Meal) {
+            possibleMealsList.append(newMeal)
+            saveMealsList()
+        }
+        
         
     }
 }

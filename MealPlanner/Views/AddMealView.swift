@@ -34,7 +34,6 @@ struct AddMealView: View {
                 } label: {
                     Label("Add more", systemImage: "plus.circle")
                 }
-
             }
         }
         .toolbar {

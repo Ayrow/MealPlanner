@@ -36,7 +36,7 @@ struct AllPossibleMealsView: View {
             .sheet(isPresented: $viewModel.showAddMealSheet) {
                 NavigationView {
                     AddMealView(meal: Meal(id: UUID(), name: "")){newMeal in
-                        //
+                        viewModel.addNewMeal(newMeal)
                     }
                 }
             }
