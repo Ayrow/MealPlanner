@@ -10,7 +10,23 @@ import SwiftUI
 struct AllPossibleMealsView: View {
     var body: some View {
         NavigationStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            VStack {
+                Text("Here you can see, add, edit or remove all the meals you have in your collection.")
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                ScrollView {
+                    // Here will be shown a list of all meals
+                }
+            }
+            .navigationTitle("All Possible Meals")
+            .toolbar {
+                Button {
+                    //
+                } label: {
+                    Label("Add meal", systemImage: "plus")
+                }
+        }
         }
     }
 }
