@@ -10,8 +10,14 @@ import SwiftUI
 struct AddMealView: View {
     var body: some View {
         VStack {
-            //
+            Text("Hello")
         }
+        .toolbar {
+            Button("Save"){
+                //
+            }
+        }
+        .navigationTitle("Add Meal")
     }
 }
 

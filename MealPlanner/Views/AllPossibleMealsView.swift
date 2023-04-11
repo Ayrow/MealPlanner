@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AllPossibleMealsView: View {
+    @StateObject private var viewModel = ViewModel()
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -17,14 +19,16 @@ struct AllPossibleMealsView: View {
                 
                 ScrollView {
                     List {
-                        
+                        ForEach(viewModel.possibleMealsList, id:\.id) { meal in
+                            Text(meal.name)
+                        }
                     }
                 }
             }
             .navigationTitle("All Possible Meals")
             .toolbar {
                 Button {
-                    //
+                    viewModel.showAddMealSheet.toggle()
                 } label: {
                     Label("Add meal", systemImage: "plus")
                 }
