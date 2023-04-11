@@ -18,6 +18,7 @@ struct Meal: Identifiable, Codable {
 
 
 struct PlannedMeals: Codable {
+    
     enum DaysOfWeek: Codable {
         case monday, tuesday, wednesday, thursday, friday, saturday, sunday
     }

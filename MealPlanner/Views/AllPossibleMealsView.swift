@@ -32,7 +32,12 @@ struct AllPossibleMealsView: View {
                 } label: {
                     Label("Add meal", systemImage: "plus")
                 }
-        }
+            }
+            .sheet(isPresented: $viewModel.showAddMealSheet) {
+                AddMealView(meal: Meal(id: UUID(), name: "")){newMeal in
+                    //
+                }
+            }
         }
     }
 }
