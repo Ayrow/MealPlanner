@@ -11,7 +11,18 @@ struct ContentView: View {
     @State private var splashLoaded = false
     var body: some View {
         if splashLoaded {
-            MainView()
+            TabView {
+                MainView()
+                    .tabItem {
+                        Label("Planner", systemImage: "list.dash.header.rectangle")
+                    }
+                
+                AllPossibleMealsView()
+                    .tabItem {
+                        Label("All Meals", systemImage: "fork.knife.circle")
+                    }
+            }
+            
         } else {
             LaunchScreen(splashLoaded: $splashLoaded)
         }

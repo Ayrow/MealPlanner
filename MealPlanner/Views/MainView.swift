@@ -11,14 +11,28 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color("LaunchScreenBackgroundColor")
-                
-                VStack {
+                    Color("LaunchScreenBackgroundColor")
                     
+                    VStack {
+                        HStack {
+                            Text("Monday")
+                            Spacer()
+                            VStack {
+                                HStack {
+                                    Text("Lunch: ")
+                                    Text("Picker goes here")
+                                }
+                                HStack {
+                                    Text("Lunch: ")
+                                    Text("Picker goes here")
+                                }
+                            }
+                        }
+                        .padding()
+                    }
                 }
-            }
-            .ignoresSafeArea()
-            
+                .ignoresSafeArea()
+            .navigationTitle("Meal Planner")
         }
     }
 }
