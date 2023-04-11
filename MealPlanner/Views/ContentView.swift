@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var splashLoaded = false
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        if splashLoaded {
+            MainView()
+        } else {
+            LaunchScreen(splashLoaded: $splashLoaded)
         }
-        .padding()
     }
 }
 
