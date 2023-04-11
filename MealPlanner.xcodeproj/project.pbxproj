@@ -17,8 +17,8 @@
 		9404FA0929E56E5E0097F270 /* AllPossibleMealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0829E56E5E0097F270 /* AllPossibleMealsView.swift */; };
 		9404FA0B29E5722C0097F270 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0A29E5722C0097F270 /* Meal.swift */; };
 		9404FA0D29E575FB0097F270 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0C29E575FB0097F270 /* FileManager-DocumentsDirectory.swift */; };
-		9404FA1129E578AE0097F270 /* AddMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA1029E578AE0097F270 /* AddMeal.swift */; };
 		9404FA1329E578E50097F270 /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA1229E578E50097F270 /* ContentView-ViewModel.swift */; };
+		9404FA1529E57B250097F270 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA1429E57B250097F270 /* AddMealView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +34,8 @@
 		9404FA0829E56E5E0097F270 /* AllPossibleMealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPossibleMealsView.swift; sourceTree = "<group>"; };
 		9404FA0A29E5722C0097F270 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		9404FA0C29E575FB0097F270 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
-		9404FA1029E578AE0097F270 /* AddMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeal.swift; sourceTree = "<group>"; };
 		9404FA1229E578E50097F270 /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
+		9404FA1429E57B250097F270 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +94,7 @@
 				9404F9FE29E564500097F270 /* LaunchScreen.swift */,
 				9404F9FC29E564400097F270 /* MainView.swift */,
 				9404FA0829E56E5E0097F270 /* AllPossibleMealsView.swift */,
-				9404FA1029E578AE0097F270 /* AddMeal.swift */,
+				9404FA1429E57B250097F270 /* AddMealView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,13 +195,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9404FA1129E578AE0097F270 /* AddMeal.swift in Sources */,
 				9404F9FF29E564500097F270 /* LaunchScreen.swift in Sources */,
 				9404FA0D29E575FB0097F270 /* FileManager-DocumentsDirectory.swift in Sources */,
 				9404F9E629E5554B0097F270 /* ContentView.swift in Sources */,
 				9404FA1329E578E50097F270 /* ContentView-ViewModel.swift in Sources */,
 				9404FA0929E56E5E0097F270 /* AllPossibleMealsView.swift in Sources */,
 				9404F9FD29E564400097F270 /* MainView.swift in Sources */,
+				9404FA1529E57B250097F270 /* AddMealView.swift in Sources */,
 				9404FA0B29E5722C0097F270 /* Meal.swift in Sources */,
 				9404F9E429E5554B0097F270 /* MealPlannerApp.swift in Sources */,
 			);

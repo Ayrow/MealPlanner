@@ -13,5 +13,8 @@ struct Meal: Identifiable, Codable {
     var ingredients: [String]?
     var recipe: URL?
     
-    static let example = Meal(id: UUID(), name: "Porc au caramel", recipe: URL(string:  "https://www.marmiton.org/recettes/recette_porc-caramel_72335.aspx"))
+    static let example = Meal(id: UUID(), name: "Pâtes bolognaises", ingredients: ["pâtes", "sauce tomates", "oignons", "carottes", "viande hachée"], recipe: URL(string:  "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx"))
 }
+
+
+// Un jour > Un moment (lunch ou dinner) > Meal
