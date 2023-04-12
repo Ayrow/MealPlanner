@@ -33,11 +33,13 @@ import SwiftUI
             }
         }
         
-        
-        
         func addNewMeal(_ recipe: Meal) {
-            objectWillChange.send()
             allRecipes.append(recipe)
+            saveMealsList()
+        }
+        
+        func removeMeal(_ recipe: Meal){
+            allRecipes.removeAll(where: {$0 == recipe})
             saveMealsList()
         }
     
