@@ -39,6 +39,11 @@ struct MainView: View {
                     viewModel.saveWeekMeals()
                 })
                 .navigationTitle("Meal Planner")
+                .toolbar {
+                    Button("Clear All"){
+                        viewModel.weekMeals.reset()
+                    }
+                }
         }
     }
 }
