@@ -11,6 +11,7 @@ import Foundation
         
         @Published private(set) var possibleMealsList: [Meal]
         @Published var showAddMealSheet = false
+        @Published var plannedMeals: [Days: [String: Meal]] = Days.allCases.reduce(into: [:]) { $0[$1] = ["lunch": .emptySelection, "dinner": .emptySelection] }
         
         let savedPathForAllMeals = FileManager.documentsDirectory.appendingPathComponent("savedMeals")
         

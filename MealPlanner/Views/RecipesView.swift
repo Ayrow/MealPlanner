@@ -17,7 +17,6 @@ struct RecipesView: View {
                     .multilineTextAlignment(.center)
                     .padding()
                 
-                ScrollView {
                     List {
                         ForEach(viewModel.possibleMealsList, id:\.id) { meal in
                             NavigationLink {
@@ -28,7 +27,7 @@ struct RecipesView: View {
 
                         }
                     }
-                }
+                
             }
             .navigationTitle("All Possible Meals")
             .toolbar {

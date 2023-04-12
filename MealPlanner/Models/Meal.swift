@@ -7,11 +7,13 @@
 
 import Foundation
 
-struct Meal: Identifiable, Codable {
+struct Meal: Identifiable, Codable, Hashable {
     let id: UUID
     var name: String
     var ingredients: [String]?
     var recipe: URL?
+    
+    static let emptySelection = Meal(id: UUID(), name: "Pick a Meal")
     
     static let example = Meal(id: UUID(), name: "Pâtes bolognaises", ingredients: ["pâtes", "sauce tomates", "oignons", "carottes", "viande hachée"], recipe: URL(string:  "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx"))
 }
