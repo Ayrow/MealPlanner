@@ -18,14 +18,28 @@ struct Meal: Identifiable, Codable, Hashable {
     static let example = Meal(id: UUID(), name: "Pâtes bolognaises", ingredients: ["pâtes", "sauce tomates", "oignons", "carottes", "viande hachée"], recipe: URL(string:  "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx"))
 }
 
-
 struct PlannedMeals: Codable {
     
-    enum DaysOfWeek: Codable {
+    enum DaysOfWeek: Codable, CaseIterable {
         case monday, tuesday, wednesday, thursday, friday, saturday, sunday
     }
     
-    enum MealType: Codable {
+    enum MealType: Codable, CaseIterable {
+        case lunch, dinner
+    }
+    
+    var planning: [DaysOfWeek: [MealType: Meal?]]
+}
+
+
+/*
+struct PlannedMeals: Codable {
+    
+    enum DaysOfWeek: Codable, CaseIterable {
+        case monday, tuesday, wednesday, thursday, friday, saturday, sunday
+    }
+    
+    enum MealType: Codable, CaseIterable {
         case lunch, dinner
     }
     
@@ -33,10 +47,13 @@ struct PlannedMeals: Codable {
     var mealType: MealType
     var meal: Meal
     
-    init(day: DaysOfWeek, mealType: MealType, meal: Meal) {
+    var planning: [DaysOfWeek: [MealType: Meal]]
+    
+    init(day: DaysOfWeek, mealType: MealType, meal: Meal, p) {
         self.day = day
         self.mealType = mealType
         self.meal = meal
+        self.pla
     }
     
     static let example = PlannedMeals(day: .monday, mealType: .lunch, meal: Meal(id: UUID(), name: "Pâtes bolo"))
@@ -60,3 +77,6 @@ struct PlannedMeals: Codable {
     }
     
 }
+
+
+  */

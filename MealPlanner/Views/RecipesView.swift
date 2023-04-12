@@ -18,7 +18,7 @@ struct RecipesView: View {
                     .padding()
                 
                     List {
-                        ForEach(viewModel.possibleMealsList, id:\.id) { meal in
+                        ForEach(viewModel.allRecipes, id:\.id) { meal in
                             NavigationLink {
                                 // MARK: Need a navigation to a Detail View of the Meal
                             } label: {

@@ -13,41 +13,29 @@ enum Days: String, CaseIterable {
 
 struct MainView: View {
     @StateObject var viewModel = ViewModel()
-
+    private let timeOfDay = ["Lunch", "Dinner", "Lunch + Dinner"]
+    @State private var selectedMealType = "Dinner"
+    @State private var selectedMeal: String?
+    
     var body: some View {
         NavigationStack {
-            Form {
-                ForEach(Days.allCases, id: \.self) { day in
-                    Section(day.rawValue) {
-                        Picker("Lunch", selection: Binding(get: {
-                            viewModel.plannedMeals[day]?["lunch"]
-                        }, set: { newValue in
-                            viewModel.plannedMeals[day]?["lunch"] = newValue
-                        })) {
-                            Text("Pick a Meal").tag(nil as Meal?)
-                            ForEach(viewModel.possibleMealsList, id: \.id) { meal in
-                                Text(meal.name).tag(meal as Meal?)
+                Form {
+                    ForEach(Days.allCases, id: \.self) { day in
+                        Section(day.rawValue) {
+                            
+                            Picker("Lunch", selection: $selectedMeal) {
+                                Text("Pick a Meal").tag(Optional<Meal>(nil))
+                                ForEach(viewModel.allRecipes, id:\.id) { meal in
+                                    Text(meal.name).tag(meal as Meal?)
+                                }
                             }
+                            .pickerStyle(.navigationLink)
+                            
                         }
-                        .pickerStyle(.navigationLink)
-
-                        Picker("Dinner", selection: Binding(get: {
-                            viewModel.plannedMeals[day]?["dinner"]
-                        }, set: { newValue in
-                            viewModel.plannedMeals[day]?["dinner"] = newValue
-                        })) {
-                            Text("Pick a Meal").tag(nil as Meal?)
-                            ForEach(viewModel.possibleMealsList, id: \.id) { meal in
-                                Text(meal.name).tag(meal as Meal?)
-                            }
-                        }
-                        .pickerStyle(.navigationLink)
+                        .headerProminence(.increased)
                     }
-                    .headerProminence(.increased)
                 }
-            }
-            
-            .navigationTitle("Meal Planner")
+                .navigationTitle("Meal Planner")
         }
     }
 }
