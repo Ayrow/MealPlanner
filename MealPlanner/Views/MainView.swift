@@ -25,11 +25,13 @@ struct MainView: View {
                                         ForEach(MealsPlan.MealType.allCases, id: \.self) { mealType in
                                             Picker(mealType.rawValue, selection: $viewModel.weekMeals[day, mealType]) {
                                                 Text("Pick a Meal").tag(Optional<Meal>(nil))
-                                                ForEach(recipes.allRecipes) { meal in
+                                                ForEach(recipes.allRecipes.sorted()) { meal in
                                                     Text(meal.name).tag(meal as Meal?)
+                                                        .foregroundColor(.blue)
                                                    }
                                                }
                                                .pickerStyle(.navigationLink)
+                                               
                                            }
                                        }
                                        .headerProminence(.increased)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Meal: Identifiable, Codable, Hashable {
+struct Meal: Identifiable, Comparable, Codable, Hashable {
     let id: UUID
     var name: String
     var ingredients: [String]?
@@ -16,6 +16,10 @@ struct Meal: Identifiable, Codable, Hashable {
     static let emptySelection = Meal(id: UUID(), name: "Pick a Meal")
     
     static let example = Meal(id: UUID(), name: "Pâtes bolognaises", ingredients: ["pâtes", "sauce tomates", "oignons", "carottes", "viande hachée"], recipe: URL(string:  "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx"))
+    
+    static func <(lhs: Meal, rhs: Meal) -> Bool {
+        lhs.name < rhs.name
+    }
 }
 
 struct MealsPlan: Codable, Hashable {
