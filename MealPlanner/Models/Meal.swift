@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Meal: Identifiable, Comparable, Codable, Hashable {
-    let id: UUID
+struct Meal: Identifiable, Comparable, Equatable, Codable, Hashable {
+    var id = UUID()
     var name: String
     var ingredients: [String]?
     var recipe: URL?
@@ -20,16 +20,20 @@ struct Meal: Identifiable, Comparable, Codable, Hashable {
     static func <(lhs: Meal, rhs: Meal) -> Bool {
         lhs.name < rhs.name
     }
+    
+    static func ==(lhs: Meal, rhs: Meal) -> Bool {
+        lhs.id == rhs.id
+    }
 }
 
 struct MealsPlan: Codable, Hashable {
     
     enum DaysOfWeek: String, Codable, CaseIterable {
-        case monday, tuesday, wednesday, thursday, friday, saturday, sunday
+        case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
     }
     
     enum MealType: String, Codable, CaseIterable {
-        case lunch, dinner
+        case Lunch, Dinner
     }
     
     private var plannedMeals: [DaysOfWeek: [MealType: Meal?]]

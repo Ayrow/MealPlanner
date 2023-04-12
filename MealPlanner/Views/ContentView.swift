@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var splashLoaded = false
+    @StateObject var recipes = RecipesViewViewModel()
+    
     var body: some View {
         if splashLoaded {
             TabView {
@@ -16,11 +18,13 @@ struct ContentView: View {
                     .tabItem {
                         Label("Meals Plan", systemImage: "calendar")
                     }
+                    .environmentObject(recipes)
                 
                 RecipesView()
                     .tabItem {
                         Label("Recipes", systemImage: "book")
                     }
+                    .environmentObject(recipes)
             }
             
         } else {

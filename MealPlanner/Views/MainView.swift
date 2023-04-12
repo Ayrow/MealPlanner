@@ -13,7 +13,8 @@ enum Days: String, CaseIterable {
 
 struct MainView: View {
     @StateObject var viewModel = MainViewViewModel()
-    @ObservedObject var recipes = RecipesViewViewModel()
+    @EnvironmentObject var recipes: RecipesViewViewModel
+    
     private let timeOfDay = ["Lunch", "Dinner", "Lunch + Dinner"]
     @State private var selectedMealType = "Dinner"
     
@@ -24,14 +25,14 @@ struct MainView: View {
                                     Section(day.rawValue) {
                                         ForEach(MealsPlan.MealType.allCases, id: \.self) { mealType in
                                             Picker(mealType.rawValue, selection: $viewModel.weekMeals[day, mealType]) {
-                                                Text("Pick a Meal").tag(Optional<Meal>(nil))
-                                                ForEach(recipes.allRecipes.sorted()) { meal in
+                                            Text("Pick a Meal").tag(Optional<Meal>(nil))
+                                                
+                                                ForEach(recipes.allRecipes.sorted(), id:\.self) { meal in
                                                     Text(meal.name).tag(meal as Meal?)
                                                         .foregroundColor(.blue)
                                                    }
                                                }
                                                .pickerStyle(.navigationLink)
-                                               
                                            }
                                        }
                                        .headerProminence(.increased)
@@ -48,10 +49,12 @@ struct MainView: View {
                 }
         }
     }
+    
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(RecipesViewViewModel())
     }
 }

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct RecipesView: View {
-    @Environment(\.isSearching) var isSearching
-    @StateObject private var viewModel = RecipesViewViewModel()
+    @EnvironmentObject var recipes: RecipesViewViewModel
     
     var body: some View {
         NavigationStack {
@@ -19,7 +18,7 @@ struct RecipesView: View {
                         .padding()
                 
                     List {
-                        ForEach(viewModel.allRecipes.sorted(), id:\.id) { meal in
+                        ForEach(recipes.allRecipes.sorted(), id:\.id) { meal in
                             NavigationLink {
                                 // MARK: Need a navigation to a Detail View of the Meal
                             } label: {
@@ -27,7 +26,7 @@ struct RecipesView: View {
                             }
                             .swipeActions {
                                 Button(role: .destructive) {
-                                    viewModel.removeMeal(meal)
+                                    recipes.removeMeal(meal)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
@@ -41,15 +40,15 @@ struct RecipesView: View {
             .navigationTitle("All Possible Meals")
             .toolbar {
                 Button {
-                    viewModel.showAddMealSheet.toggle()
+                    recipes.showAddMealSheet.toggle()
                 } label: {
                     Label("Add meal", systemImage: "plus")
                 }
             }
-            .sheet(isPresented: $viewModel.showAddMealSheet) {
+            .sheet(isPresented: $recipes.showAddMealSheet) {
                 NavigationView {
                     AddMealView(meal: Meal(id: UUID(), name: "")){ newMeal in
-                        viewModel.addNewMeal(newMeal)
+                        recipes.addNewMeal(newMeal)
                     }
                 }
             }
@@ -63,5 +62,6 @@ struct RecipesView: View {
 struct AllPossibleMealsView_Previews: PreviewProvider {
     static var previews: some View {
         RecipesView()
+            .environmentObject(RecipesViewViewModel())
     }
 }

@@ -11,6 +11,7 @@ import SwiftUI
     @MainActor class RecipesViewViewModel: ObservableObject {
         
         @Published private(set) var allRecipes: [Meal]
+        
         @Published var showAddMealSheet = false
         
         let savedPathForRecipes = FileManager.documentsDirectory.appendingPathComponent("savedRecipes")
@@ -21,6 +22,7 @@ import SwiftUI
                 allRecipes = try JSONDecoder().decode([Meal].self, from: mealsListData)
             } catch {
                 allRecipes = []
+                
             }
         }
         
