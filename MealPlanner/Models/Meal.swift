@@ -18,22 +18,47 @@ struct Meal: Identifiable, Codable, Hashable {
     static let example = Meal(id: UUID(), name: "Pâtes bolognaises", ingredients: ["pâtes", "sauce tomates", "oignons", "carottes", "viande hachée"], recipe: URL(string:  "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx"))
 }
 
-struct PlannedMeals: Codable {
+struct MealsPlan: Codable, Hashable {
     
-    enum DaysOfWeek: Codable, CaseIterable {
+    enum DaysOfWeek: String, Codable, CaseIterable {
         case monday, tuesday, wednesday, thursday, friday, saturday, sunday
     }
     
-    enum MealType: Codable, CaseIterable {
+    enum MealType: String, Codable, CaseIterable {
         case lunch, dinner
     }
     
-    var planning: [DaysOfWeek: [MealType: Meal?]]
+    private var plannedMeals: [DaysOfWeek: [MealType: Meal?]]
+    
+    subscript(day: DaysOfWeek, mealType: MealType) -> Meal? {
+        get { plannedMeals[day]?[mealType] ?? nil }
+        set { plannedMeals[day]?[mealType] = newValue }
+    }
+    
+    init() {
+        plannedMeals = [:]
+        for day in DaysOfWeek.allCases {
+            plannedMeals[day] = [MealType: Meal?]()
+            for mealType in MealType.allCases {
+                plannedMeals[day]![mealType] = nil
+            }
+        }
+    }
+    
+    mutating func reset() {
+        plannedMeals = [:]
+        for day in DaysOfWeek.allCases {
+            plannedMeals[day] = [MealType: Meal?]()
+            for mealType in MealType.allCases {
+                plannedMeals[day]![mealType] = nil
+            }
+        }
+    }
 }
 
 
 /*
-struct PlannedMeals: Codable {
+struct MealsPlan: Codable {
     
     enum DaysOfWeek: Codable, CaseIterable {
         case monday, tuesday, wednesday, thursday, friday, saturday, sunday
@@ -47,8 +72,6 @@ struct PlannedMeals: Codable {
     var mealType: MealType
     var meal: Meal
     
-    var planning: [DaysOfWeek: [MealType: Meal]]
-    
     init(day: DaysOfWeek, mealType: MealType, meal: Meal, p) {
         self.day = day
         self.mealType = mealType
@@ -56,7 +79,7 @@ struct PlannedMeals: Codable {
         self.pla
     }
     
-    static let example = PlannedMeals(day: .monday, mealType: .lunch, meal: Meal(id: UUID(), name: "Pâtes bolo"))
+    static let example = MealsPlan(day: .monday, mealType: .lunch, meal: Meal(id: UUID(), name: "Pâtes bolo"))
     
     enum CodingKeys: CodingKey {
         case day, mealType, meal

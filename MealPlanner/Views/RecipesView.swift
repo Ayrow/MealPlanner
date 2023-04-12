@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipesView: View {
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel = RecipesViewViewModel()
     
     var body: some View {
         NavigationStack {
@@ -39,7 +39,7 @@ struct RecipesView: View {
             }
             .sheet(isPresented: $viewModel.showAddMealSheet) {
                 NavigationView {
-                    AddMealView(meal: Meal(id: UUID(), name: "")){newMeal in
+                    AddMealView(meal: Meal(id: UUID(), name: "")){ newMeal in
                         viewModel.addNewMeal(newMeal)
                     }
                 }

@@ -6,25 +6,21 @@
 //
 
 import Foundation
+import SwiftUI
 
-    @MainActor class ViewModel: ObservableObject {
+    @MainActor class RecipesViewViewModel: ObservableObject {
         
         @Published private(set) var allRecipes: [Meal]
         @Published var showAddMealSheet = false
-        @Published private(set) var weekMeals: PlannedMeals
         
         let savedPathForRecipes = FileManager.documentsDirectory.appendingPathComponent("savedRecipes")
-        let savedPathWeekMeals = FileManager.documentsDirectory.appendingPathComponent("savedWeekMeals")
         
         init() {
             do {
                 let mealsListData = try Data(contentsOf: savedPathForRecipes)
-                let weekMealsData = try Data(contentsOf: savedPathWeekMeals)
                 allRecipes = try JSONDecoder().decode([Meal].self, from: mealsListData)
-                weekMeals = try JSONDecoder().decode(PlannedMeals.self, from: weekMealsData)
             } catch {
                 allRecipes = []
-                weekMeals = PlannedMeals(planning: [:])
             }
         }
         
@@ -37,21 +33,14 @@ import Foundation
             }
         }
         
-        func saveWeekMeals() {
-            do {
-                let data = try JSONEncoder().encode(weekMeals)
-                try data.write(to: savedPathWeekMeals)
-            } catch {
-                print("Unable to save the meals for the week: \(error.localizedDescription)")
-            }
-        }
+        
         
         func addNewMeal(_ recipe: Meal) {
+            objectWillChange.send()
             allRecipes.append(recipe)
             saveMealsList()
         }
-        
-        
+    
         
         
     }

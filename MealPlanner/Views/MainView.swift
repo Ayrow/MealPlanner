@@ -12,29 +12,32 @@ enum Days: String, CaseIterable {
 }
 
 struct MainView: View {
-    @StateObject var viewModel = ViewModel()
+    @StateObject var viewModel = MainViewViewModel()
+    @ObservedObject var recipes = RecipesViewViewModel()
     private let timeOfDay = ["Lunch", "Dinner", "Lunch + Dinner"]
     @State private var selectedMealType = "Dinner"
-    @State private var selectedMeal: String?
     
     var body: some View {
         NavigationStack {
                 Form {
-                    ForEach(Days.allCases, id: \.self) { day in
-                        Section(day.rawValue) {
-                            
-                            Picker("Lunch", selection: $selectedMeal) {
-                                Text("Pick a Meal").tag(Optional<Meal>(nil))
-                                ForEach(viewModel.allRecipes, id:\.id) { meal in
-                                    Text(meal.name).tag(meal as Meal?)
-                                }
-                            }
-                            .pickerStyle(.navigationLink)
-                            
-                        }
-                        .headerProminence(.increased)
-                    }
+                    ForEach(MealsPlan.DaysOfWeek.allCases, id: \.self) { day in
+                                    Section(day.rawValue) {
+                                        ForEach(MealsPlan.MealType.allCases, id: \.self) { mealType in
+                                            Picker(mealType.rawValue, selection: $viewModel.weekMeals[day, mealType]) {
+                                                Text("Pick a Meal").tag(Optional<Meal>(nil))
+                                                ForEach(recipes.allRecipes) { meal in
+                                                    Text(meal.name).tag(meal as Meal?)
+                                                   }
+                                               }
+                                               .pickerStyle(.navigationLink)
+                                           }
+                                       }
+                                       .headerProminence(.increased)
+                                   }
                 }
+                .onChange(of: viewModel.weekMeals, perform: { _ in
+                    viewModel.saveWeekMeals()
+                })
                 .navigationTitle("Meal Planner")
         }
     }
