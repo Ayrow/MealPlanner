@@ -17,41 +17,22 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                    Color("LaunchScreenBackgroundColor")
-                        .ignoresSafeArea()
-                    
-                ScrollView(showsIndicators: false) {
-                        
-                        ForEach(Days.allCases, id: \.rawValue) { day in
-                            VStack {
-                                Text(day.rawValue)
-                                    .font(.title.bold())
-                                
-                                VStack {
-                                    Text("Lunch:  ")
-                                        .font(.title2)
-                                        .multilineTextAlignment(.leading)
-                                        .padding()
-                                    
-                                    Text("Dinner:  ")
-                                        .font(.title2)
-                                        .multilineTextAlignment(.leading)
-                                        .padding()
-                                }
+                Form {
+                    ForEach(Days.allCases, id: \.self) { day in
+                        Section(day.rawValue) {
+                            
+                            Picker("Lunch", selection: $selectedMealType) {
+                                Text("Meal 1")
                             }
-                            .frame(width: UIScreen.main.bounds.width * 0.85)
-                            .padding()
-                            .background(Color("BlackWhite").opacity(0.8))
-                            .clipShape(
-                                RoundedRectangle(cornerRadius: 20)
-                            )
-                            .shadow(color: .gray, radius: 5)
-                            .padding(.vertical, 10)
+                            .pickerStyle(.navigationLink)
+                            
+                            Picker("Dinner", selection: $selectedMealType) {
+                                Text("Meal 2")
+                            }
+                            .pickerStyle(.navigationLink)
                         }
-                        
+                        .headerProminence(.increased)
                     }
-                
                 }
                 .navigationTitle("Meal Planner")
         }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AllPossibleMealsView: View {
+struct RecipesView: View {
     @StateObject private var viewModel = ViewModel()
     
     var body: some View {
@@ -20,7 +20,12 @@ struct AllPossibleMealsView: View {
                 ScrollView {
                     List {
                         ForEach(viewModel.possibleMealsList, id:\.id) { meal in
-                            Text(meal.name)
+                            NavigationLink {
+                                // MARK: Need a navigation to a Detail View of the Meal
+                            } label: {
+                                Text(meal.name)
+                            }
+
                         }
                     }
                 }
@@ -46,6 +51,6 @@ struct AllPossibleMealsView: View {
 
 struct AllPossibleMealsView_Previews: PreviewProvider {
     static var previews: some View {
-        AllPossibleMealsView()
+        RecipesView()
     }
 }

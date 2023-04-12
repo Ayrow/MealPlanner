@@ -14,12 +14,12 @@ struct ContentView: View {
             TabView {
                 MainView()
                     .tabItem {
-                        Label("Planner", systemImage: "list.dash.header.rectangle")
+                        Label("Meals Plan", systemImage: "calendar")
                     }
                 
-                AllPossibleMealsView()
+                RecipesView()
                     .tabItem {
-                        Label("All Meals", systemImage: "fork.knife.circle")
+                        Label("Recipes", systemImage: "book")
                     }
             }
             
