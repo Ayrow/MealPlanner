@@ -12,8 +12,10 @@ enum Days: String, CaseIterable {
 }
 
 struct MainView: View {
+    @StateObject var viewModel = ViewModel()
     private let timeOfDay = ["Lunch", "Dinner", "Lunch + Dinner"]
     @State private var selectedMealType = "Dinner"
+    @State private var selectedMeal = ""
     
     var body: some View {
         NavigationStack {
@@ -21,15 +23,13 @@ struct MainView: View {
                     ForEach(Days.allCases, id: \.self) { day in
                         Section(day.rawValue) {
                             
-                            Picker("Lunch", selection: $selectedMealType) {
-                                Text("Meal 1")
+                            Picker("Lunch", selection: $selectedMeal) {
+                                ForEach(viewModel.possibleMealsList, id:\.id) { meal in
+                                    Text(meal.name)
+                                }
                             }
                             .pickerStyle(.navigationLink)
                             
-                            Picker("Dinner", selection: $selectedMealType) {
-                                Text("Meal 2")
-                            }
-                            .pickerStyle(.navigationLink)
                         }
                         .headerProminence(.increased)
                     }

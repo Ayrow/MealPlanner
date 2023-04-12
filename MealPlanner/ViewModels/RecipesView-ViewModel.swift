@@ -7,7 +7,6 @@
 
 import Foundation
 
-extension RecipesView {
     @MainActor class ViewModel: ObservableObject {
         
         @Published private(set) var possibleMealsList: [Meal]
@@ -43,4 +42,3 @@ extension RecipesView {
         
         
     }
-}
