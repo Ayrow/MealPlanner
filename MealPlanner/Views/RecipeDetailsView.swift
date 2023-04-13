@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecipeDetailsView: View {
     var meal: Dish
+    
     var body: some View {
         
         Form {
@@ -20,13 +21,7 @@ struct RecipeDetailsView: View {
             }
             
             Section {
-                if meal.ingredients?.isEmpty != false && meal.ingredients != nil {
-                    List(meal.ingredients!, id:\.self) { ingredient in
-                        Text(ingredient)
-                    }
-                } else {
-                    Text("No ingredients added yet.")
-                }
+                Text("hello")
             } header: {
                 Text("Ingredients")
             }

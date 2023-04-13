@@ -7,15 +7,19 @@
 
 import Foundation
 
-struct Dish: Identifiable, Comparable, Equatable, Codable, Hashable {
+struct Dish: Identifiable, Codable, Comparable, Equatable, Hashable {
     var id = UUID()
     var name: String
-    var ingredients: [String]?
+    var ingredients: [Ingredient?]
     var recipe: String?
     
-    static let emptySelection = Dish(id: UUID(), name: "Pick a Meal")
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ingredients)
+    }
     
-    static let example = Dish(id: UUID(), name: "Pâtes bolognaises", ingredients: ["pâtes", "sauce tomates", "oignons", "carottes", "viande hachée"], recipe: "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx")
+    static let emptySelection = Dish(id: UUID(), name: "Pick a Meal", ingredients: [Ingredient(name: "Pates", category: .Fruits)])
+    
+    static let example = Dish(id: UUID(), name: "Pâtes bolognaises", ingredients: [], recipe: "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx")
     
     static func <(lhs: Dish, rhs: Dish) -> Bool {
         lhs.name < rhs.name
@@ -26,7 +30,7 @@ struct Dish: Identifiable, Comparable, Equatable, Codable, Hashable {
     }
 }
 
-struct MealsPlan: Codable, Hashable {
+struct MealsPlan: Codable, Equatable {
     
     enum DaysOfWeek: String, Codable, CaseIterable {
         case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday

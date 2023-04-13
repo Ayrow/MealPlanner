@@ -16,7 +16,7 @@ struct AddDishView: View {
     
     @State var name = ""
     @State var recipe = ""
-    @State var ingredientsRecipe: [String] = [""]
+    @State var ingredientsRecipe: [Ingredient?] = []
     
     var body: some View {
         Form {
@@ -27,15 +27,11 @@ struct AddDishView: View {
                 TextField("Enter the full URL of the recipe", text: $recipe)
             }
             Section("Ingredients") {
-                ForEach(0..<ingredientsRecipe.count, id:\.self) { index in
-                    Picker(ingredientsRecipe[index], selection: $ingredientsRecipe[index]) {
-                        Text("Pick an ingredient")
+                ForEach(0..<ingredientsRecipe.count + 1, id:\.self) { _ in
+                    Picker("Select", selection: $ingredientsRecipe) {
+                       
                     }
-                }
-                Button {
-                    self.ingredientsRecipe.append("")
-                } label: {
-                    Label("Add more", systemImage: "plus.circle")
+                    
                 }
             }
         }
@@ -45,6 +41,7 @@ struct AddDishView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save"){
+                    guard name.trimmingCharacters(in: .whitespacesAndNewlines) != "" else {return}
                     var newDish = dish
                     newDish.name = name
                     newDish.recipe = recipe
@@ -53,6 +50,7 @@ struct AddDishView: View {
                     onSave(newDish)
                     dismiss()
                 }
+                .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines) == "")
             }
         }
         .navigationTitle("Add Meal")
@@ -72,5 +70,6 @@ struct AddDishView: View {
 struct AddMealView_Previews: PreviewProvider {
     static var previews: some View {
         AddDishView(dish: Dish.example){_ in}
+            .environmentObject(IngredientsViewModel())
     }
 }

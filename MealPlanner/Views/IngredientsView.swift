@@ -18,9 +18,9 @@ struct IngredientsView: View {
                         .padding()
                 
                     List {
-                        ForEach(Ingredient.Categories.allCases.sorted {$0.rawValue < $1.rawValue}, id:\.self) { category in
+                        ForEach(Ingredient.Categories.allCases, id:\.self) { category in
                             Section {
-                                ForEach(allIngredients.ingredients.filter {$0.category == category}) { ingredient in
+                                ForEach(allIngredients.ingredients.filter {$0.category == category}.sorted {$0.name < $1.name}) { ingredient in
                                     Text(ingredient.name)
                                         .swipeActions {
                                             Button(role: .destructive) {

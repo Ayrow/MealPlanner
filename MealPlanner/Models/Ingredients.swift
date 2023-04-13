@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Ingredient: Identifiable, Codable, Equatable, Comparable {
+struct Ingredient: Identifiable, Codable, Equatable, Comparable, Hashable {
     var id = UUID()
     var name: String
     var category: Categories
@@ -21,14 +21,14 @@ struct Ingredient: Identifiable, Codable, Equatable, Comparable {
     static let example = Ingredient(name: "Poivron", category: .Veggies)
     
     enum Categories: String, CaseIterable, Codable {
-        case EggsMilkProducts = "Eggs, Milk and Milk Products"
-        case FatsOil = "Fats and Oils"
-        case Fruits = "Fruits"
-        case GrainNutsBakingProducts = "Grain, Nuts and Baking Products"
-        case HerbsAndSpices = "Herbs and Spices"
-        case MeatAndFish = "Meat and Fish"
         case PastaRicePulses = "Pasta, Rice and Pulses"
+        case GrainNutsBakingProducts = "Grain, Nuts and Baking Products"
+        case EggsMilkProducts = "Eggs, Milk and Milk Products"
+        case MeatAndFish = "Meat and Fish"
         case Veggies = "Vegetables"
+        case Fruits = "Fruits"
+        case HerbsAndSpices = "Herbs and Spices"
+        case FatsOil = "Fats and Oils"
         case Others = "Others"
     }
     

@@ -45,7 +45,7 @@ struct AddIngredientView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save"){
-                    guard name != "" else {return}
+                    guard name.trimmingCharacters(in: .whitespacesAndNewlines) != "" else {return}
                     var newIngredient = ingredient
                     newIngredient.category = category
                     newIngredient.id = UUID()
@@ -54,7 +54,7 @@ struct AddIngredientView: View {
                     onSave(newIngredient)
                     dismiss()
                 }
-                .disabled(name == "")
+                .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines) == "")
             }
         }
         .navigationTitle("Add Ingredient")

@@ -14,7 +14,7 @@
 		9404F9FD29E564400097F270 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404F9FC29E564400097F270 /* MainView.swift */; };
 		9404F9FF29E564500097F270 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404F9FE29E564500097F270 /* LaunchScreen.swift */; };
 		9404FA0229E569DF0097F270 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9404FA0429E569DF0097F270 /* Localizable.strings */; };
-		9404FA0929E56E5E0097F270 /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0829E56E5E0097F270 /* RecipesView.swift */; };
+		9404FA0929E56E5E0097F270 /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0829E56E5E0097F270 /* DishView.swift */; };
 		9404FA0B29E5722C0097F270 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0A29E5722C0097F270 /* Dish.swift */; };
 		9404FA0D29E575FB0097F270 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0C29E575FB0097F270 /* FileManager-DocumentsDirectory.swift */; };
 		9404FA1329E578E50097F270 /* RecipesView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA1229E578E50097F270 /* RecipesView-ViewModel.swift */; };
@@ -37,7 +37,7 @@
 		9404F9FE29E564500097F270 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		9404FA0329E569DF0097F270 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9404FA0529E569E10097F270 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9404FA0829E56E5E0097F270 /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
+		9404FA0829E56E5E0097F270 /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
 		9404FA0A29E5722C0097F270 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		9404FA0C29E575FB0097F270 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		9404FA1229E578E50097F270 /* RecipesView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipesView-ViewModel.swift"; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				9404F9E529E5554B0097F270 /* ContentView.swift */,
 				9404F9FE29E564500097F270 /* LaunchScreen.swift */,
 				9404F9FC29E564400097F270 /* MainView.swift */,
-				9404FA0829E56E5E0097F270 /* RecipesView.swift */,
+				9404FA0829E56E5E0097F270 /* DishView.swift */,
 				9404FA1429E57B250097F270 /* AddDishView.swift */,
 				94603F7C29E8136E00AA56F1 /* AddIngredientView.swift */,
 				94603F7A29E8075C00AA56F1 /* IngredientsView.swift */,
@@ -222,7 +222,7 @@
 				9404F9E629E5554B0097F270 /* ContentView.swift in Sources */,
 				94603F7729E7F70900AA56F1 /* Ingredients.swift in Sources */,
 				9404FA1329E578E50097F270 /* RecipesView-ViewModel.swift in Sources */,
-				9404FA0929E56E5E0097F270 /* RecipesView.swift in Sources */,
+				9404FA0929E56E5E0097F270 /* DishView.swift in Sources */,
 				9404F9FD29E564400097F270 /* MainView.swift in Sources */,
 				9404FA1529E57B250097F270 /* AddDishView.swift in Sources */,
 				9404FA0B29E5722C0097F270 /* Dish.swift in Sources */,

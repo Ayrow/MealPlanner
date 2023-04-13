@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RecipesView: View {
+struct DishView: View {
     @EnvironmentObject var recipes: RecipesViewViewModel
     
     var body: some View {
@@ -50,7 +50,7 @@ struct RecipesView: View {
             }
             .sheet(isPresented: $recipes.showAddMealSheet) {
                 NavigationView {
-                    AddDishView(dish: Dish(id: UUID(), name: "", ingredients: [String](), recipe: "")){ newMeal in
+                    AddDishView(dish: Dish(id: UUID(), name: "", ingredients: [], recipe: "")){ newMeal in
                         recipes.addNewMeal(newMeal)
                     }
                 }
@@ -63,7 +63,7 @@ struct RecipesView: View {
 
 struct AllPossibleMealsView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipesView()
+        DishView()
             .environmentObject(RecipesViewViewModel())
     }
 }

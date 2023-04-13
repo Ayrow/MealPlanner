@@ -21,7 +21,7 @@ struct ContentView: View {
                     }
                     .environmentObject(recipes)
                 
-                RecipesView()
+                DishView()
                     .tabItem {
                         Label("Recipes", systemImage: "book")
                     }
