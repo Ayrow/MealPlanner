@@ -18,7 +18,7 @@ struct Ingredient: Identifiable, Codable, Equatable, Comparable, Hashable {
         self.category = category
     }
     
-    static let example = Ingredient(name: "Poivron", category: .Veggies)
+    static let example = Ingredient(name: "", category: .Others)
     
     enum Categories: String, CaseIterable, Codable {
         case PastaRicePulses = "Pasta, Rice and Pulses"

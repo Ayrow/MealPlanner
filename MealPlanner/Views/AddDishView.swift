@@ -17,6 +17,7 @@ struct AddDishView: View {
     @State var name = ""
     @State var recipe = ""
     @State var ingredientsRecipe: [Ingredient?] = []
+    @State private var selectedIngredient: Ingredient?
     
     var body: some View {
         Form {
@@ -27,12 +28,39 @@ struct AddDishView: View {
                 TextField("Enter the full URL of the recipe", text: $recipe)
             }
             Section("Ingredients") {
-                ForEach(0..<ingredientsRecipe.count + 1, id:\.self) { _ in
-                    Picker("Select", selection: $ingredientsRecipe) {
-                       
+                
+                    Picker("Select an ingredient" ,selection: $selectedIngredient) {
+                        Text("Select one").tag(Optional<Ingredient>(nil))
+                        ForEach(allIngredients.ingredients, id:\.self) { ingredient in
+                            Text(ingredient.name).tag(ingredient as Ingredient?)
+                        }
                     }
+                    .pickerStyle(.menu)
+                
+                Button("Add"){
+                    guard ingredientsRecipe.contains(selectedIngredient) == false, selectedIngredient?.name != "" else {return}
                     
+                    ingredientsRecipe.append(selectedIngredient)
                 }
+                
+                List {
+                    if ingredientsRecipe.isEmpty == false {
+                        ForEach(ingredientsRecipe, id: \.self) { ingredient in
+                            Text(ingredient?.name ?? Ingredient.example.name)
+                                .swipeActions {
+                                    Button(role: .destructive) {
+                                        ingredientsRecipe.removeAll(where: {$0 == ingredient})
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+
+                                }
+                        }
+                    } else {
+                        Text("No ingredients added yet")
+                    }
+                }
+
             }
         }
         .toolbar {
