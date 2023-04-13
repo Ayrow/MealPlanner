@@ -21,7 +21,6 @@ class IngredientsViewModel: ObservableObject {
         }
     }
     
-    
     func saveIngredients() {
         do {
             let data = try JSONEncoder().encode(ingredients)
@@ -40,4 +39,5 @@ class IngredientsViewModel: ObservableObject {
         ingredients.removeAll(where: {$0 == ingredient})
         saveIngredients()
     }
+    
 }

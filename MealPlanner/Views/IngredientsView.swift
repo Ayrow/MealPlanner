@@ -18,22 +18,12 @@ struct IngredientsView: View {
                         .padding()
                 
                     List {
-                        ForEach(allIngredients.ingredients, id:\.id) { ingredient in
-                            NavigationLink {
-                                // MARK: Need a navigation to a Detail View of the Meal
-                                NavigationView {
-                                    //
-                                }
-                            } label: {
-                                Text(ingredient.name)
-                            }
-                            .swipeActions {
-                                Button(role: .destructive) {
-                                    //
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-
+                        ForEach(Ingredient.Categories.allCases.sorted {$0.rawValue < $1.rawValue}, id:\.self) { category in
+                            Section {
+                                
+                                
+                            } header: {
+                                Text(category.rawValue)
                             }
                             
                         }
