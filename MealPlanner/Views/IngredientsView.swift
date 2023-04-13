@@ -20,7 +20,9 @@ struct IngredientsView: View {
                     List {
                         ForEach(Ingredient.Categories.allCases.sorted {$0.rawValue < $1.rawValue}, id:\.self) { category in
                             Section {
-                                
+                                ForEach(allIngredients.ingredients.filter {$0.category == category}) { ingredient in
+                                    Text(ingredient.name)
+                                }
                                 
                             } header: {
                                 Text(category.rawValue)
@@ -33,9 +35,16 @@ struct IngredientsView: View {
             .navigationTitle("Your Ingredients")
             .toolbar {
                 Button {
-                    //
+                    allIngredients.showAddIngredientSheet.toggle()
                 } label: {
                     Label(LocalizedStringKey("Add ingredient"), systemImage: "plus")
+                }
+            }
+            .sheet(isPresented: $allIngredients.showAddIngredientSheet) {
+                NavigationView {
+                    AddIngredientView(ingredient: Ingredient(name: "", category: Ingredient.Categories.Others)) { newIngredient in
+                        allIngredients.addIngredient(newIngredient)
+                    }
                 }
             }
         }
