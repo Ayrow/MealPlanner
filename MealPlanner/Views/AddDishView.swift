@@ -27,7 +27,7 @@ struct AddDishView: View {
             }
             Section("Ingredients") {
                 ForEach(0..<ingredients.count, id:\.self) { index in
-                    TextField("Ingredient", text: self.$ingredients[index])
+                    TextField("Ingredient \(index)", text: self.$ingredients[index])
                 }
                 Button {
                     self.ingredients.append("")
