@@ -6,4 +6,56 @@
   
 */
 
-"Welcome" = "Welcome";
+// MARK: Tab Items
+
+"Meals Plan" = "Meals Plan";
+"Recipes" = "Recipes";
+"Ingredients" = "Ingredients";
+
+// MARK: Titles
+"Your Dishes" = "Your Dishes";
+"Your Ingredients" = "Your Ingredients";
+"Add Meal" = "Add Meal";
+"Meal Name" = "Meal Name";
+"Recipe" = "Recipe";
+"Ingredients" = "Ingredients";
+
+// MARK: Days of the week
+
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"Sunday" = "Sunday";
+
+// MARK: Mealtime
+"Lunch" = "Midi";
+"Dinner" = "Soir";
+
+
+// MARK: Ingredients Categories
+
+"Eggs, Milk and Milk Products" = "Eggs, Milk and Milk Products";
+"Fats and Oils" = "Fats and Oils";
+"Fruits" = "Fruits";
+"Grain, Nuts and Baking Products" = "Grain, Nuts and Baking Products";
+"Herbs and Spices" = "Herbs and Spices";
+"Meat and Fish" = "Meat and Fish";
+"Pasta, Rice and Pulses" = "Pasta, Rice and Pulses";
+"Vegetables" = "Vegetables";
+"Others" = "Others";
+
+
+// MARK: Buttons
+
+"Clear All" = "Clear All";
+"Add More" = "Add More";
+"Save" = "Save";
+"Cancel" = "Cancel";
+"Pick a Dish" = "Pick a Dish";
+
+
+// MARK: Other texts
+

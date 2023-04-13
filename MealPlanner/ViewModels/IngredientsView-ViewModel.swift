@@ -8,23 +8,23 @@
 import Foundation
 
 class IngredientsViewModel: ObservableObject {
-    @Published private(set) var allIngredients: [Ingredient]
+    @Published private(set) var ingredients: [Ingredient]
     
     let savedPath = FileManager.documentsDirectory.appendingPathComponent("savedIngredients")
     
     init() {
         do {
             let data = try Data(contentsOf: savedPath)
-            allIngredients = try JSONDecoder().decode([Ingredient].self, from: data)
+            ingredients = try JSONDecoder().decode([Ingredient].self, from: data)
         } catch {
-            allIngredients = []
+            ingredients = []
         }
     }
     
     
     func saveIngredients() {
         do {
-            let data = try JSONEncoder().encode(allIngredients)
+            let data = try JSONEncoder().encode(ingredients)
             try data.write(to: savedPath)
         } catch {
             print("Unable to save ingredients")
@@ -32,12 +32,12 @@ class IngredientsViewModel: ObservableObject {
     }
     
     func addIngredient(_ newIngredient: Ingredient) {
-        allIngredients.append(newIngredient)
+        ingredients.append(newIngredient)
         saveIngredients()
     }
     
     func removeIngredient(_ ingredient: Ingredient){
-        allIngredients.removeAll(where: {$0 == ingredient})
+        ingredients.removeAll(where: {$0 == ingredient})
         saveIngredients()
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Ingredient: Codable, Equatable, Comparable {
+struct Ingredient: Identifiable, Codable, Equatable, Comparable {
     var id = UUID()
     var name: String
     var category: Categories
@@ -22,14 +22,6 @@ struct Ingredient: Codable, Equatable, Comparable {
         case PastaRicePulses = "Pasta, Rice and Pulses"
         case Veggies = "Vegetables"
         case Others
-    }
-    
-    static func ==(lhs: Ingredient, rhs: Ingredient) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    static func <(lhs: Ingredient, rhs: Ingredient) -> Bool {
-        lhs.name < rhs.name
     }
     
     enum CodingKeys: CodingKey {
@@ -49,5 +41,15 @@ struct Ingredient: Codable, Equatable, Comparable {
         try container.encode(category, forKey: .category)
         try container.encode(id, forKey: .id)
     }
+    
+    static func ==(lhs: Ingredient, rhs: Ingredient) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    static func <(lhs: Ingredient, rhs: Ingredient) -> Bool {
+        lhs.name < rhs.name
+    }
+    
+   
     
 }

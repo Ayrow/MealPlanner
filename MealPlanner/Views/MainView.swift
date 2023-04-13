@@ -15,8 +15,8 @@ struct MainView: View {
     @StateObject var viewModel = MainViewViewModel()
     @EnvironmentObject var recipes: RecipesViewViewModel
     
-    private let timeOfDay = ["Lunch", "Dinner", "Lunch + Dinner"]
-    @State private var selectedMealType = "Dinner"
+   // private let timeOfDay = ["Lunch", "Dinner", "Lunch + Dinner"]
+   // @State private var selectedMealType = "Dinner"
     
     var body: some View {
         NavigationStack {

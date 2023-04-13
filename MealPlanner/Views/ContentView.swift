@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var splashLoaded = false
     @StateObject var recipes = RecipesViewViewModel()
+    @StateObject var allIngredients = IngredientsViewModel()
     
     var body: some View {
         if splashLoaded {
@@ -25,6 +26,13 @@ struct ContentView: View {
                         Label("Recipes", systemImage: "book")
                     }
                     .environmentObject(recipes)
+                    .environmentObject(allIngredients)
+                
+                IngredientsView()
+                    .tabItem {
+                        Label("Ingredients", systemImage: "fork.knife")
+                    }
+                    .environmentObject(allIngredients)
             }
             
         } else {

@@ -9,13 +9,14 @@ import SwiftUI
 
 struct AddDishView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var allIngredients: IngredientsViewModel
     
     var dish: Dish
     var onSave: (Dish) -> Void
     
     @State var name = ""
     @State var recipe = ""
-    @State var ingredients: [String] = [""]
+    @State var ingredientsRecipe: [String] = [""]
     
     var body: some View {
         Form {
@@ -26,11 +27,13 @@ struct AddDishView: View {
                 TextField("Enter the full URL of the recipe", text: $recipe)
             }
             Section("Ingredients") {
-                ForEach(0..<ingredients.count, id:\.self) { index in
-                    TextField("Ingredient \(index)", text: self.$ingredients[index])
+                ForEach(0..<ingredientsRecipe.count, id:\.self) { index in
+                    Picker(ingredientsRecipe[index], selection: $ingredientsRecipe[index]) {
+                        Text("Pick an ingredient")
+                    }
                 }
                 Button {
-                    self.ingredients.append("")
+                    self.ingredientsRecipe.append("")
                 } label: {
                     Label("Add more", systemImage: "plus.circle")
                 }
@@ -45,7 +48,7 @@ struct AddDishView: View {
                     var newDish = dish
                     newDish.name = name
                     newDish.recipe = recipe
-                    newDish.ingredients = ingredients
+                    newDish.ingredients = ingredientsRecipe
                     
                     onSave(newDish)
                     dismiss()
@@ -61,7 +64,7 @@ struct AddDishView: View {
         
         _name = State(initialValue: name)
         _recipe = State(initialValue: recipe)
-        _ingredients = State(initialValue: ingredients)
+        _ingredientsRecipe = State(initialValue: ingredientsRecipe)
     }
     
 }
