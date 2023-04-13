@@ -20,6 +20,7 @@
 		9404FA1329E578E50097F270 /* RecipesView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA1229E578E50097F270 /* RecipesView-ViewModel.swift */; };
 		9404FA1529E57B250097F270 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA1429E57B250097F270 /* AddMealView.swift */; };
 		9434D4E929E6B941007107EE /* MainView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434D4E829E6B941007107EE /* MainView-ViewModel.swift */; };
+		9434D4EB29E70B32007107EE /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434D4EA29E70B32007107EE /* RecipeDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		9404FA1229E578E50097F270 /* RecipesView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipesView-ViewModel.swift"; sourceTree = "<group>"; };
 		9404FA1429E57B250097F270 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
 		9434D4E829E6B941007107EE /* MainView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView-ViewModel.swift"; sourceTree = "<group>"; };
+		9434D4EA29E70B32007107EE /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				9404F9FC29E564400097F270 /* MainView.swift */,
 				9404FA0829E56E5E0097F270 /* RecipesView.swift */,
 				9404FA1429E57B250097F270 /* AddMealView.swift */,
+				9434D4EA29E70B32007107EE /* RecipeDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				9404F9FD29E564400097F270 /* MainView.swift in Sources */,
 				9404FA1529E57B250097F270 /* AddMealView.swift in Sources */,
 				9404FA0B29E5722C0097F270 /* Meal.swift in Sources */,
+				9434D4EB29E70B32007107EE /* RecipeDetailsView.swift in Sources */,
 				9404F9E429E5554B0097F270 /* MealPlannerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
