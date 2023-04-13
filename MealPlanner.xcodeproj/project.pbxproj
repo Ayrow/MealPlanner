@@ -24,6 +24,7 @@
 		94603F7729E7F70900AA56F1 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94603F7629E7F70900AA56F1 /* Ingredients.swift */; };
 		94603F7929E8003200AA56F1 /* IngredientsView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94603F7829E8003200AA56F1 /* IngredientsView-ViewModel.swift */; };
 		94603F7B29E8075C00AA56F1 /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94603F7A29E8075C00AA56F1 /* IngredientsView.swift */; };
+		94603F7D29E8136E00AA56F1 /* AddIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94603F7C29E8136E00AA56F1 /* AddIngredientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		94603F7629E7F70900AA56F1 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		94603F7829E8003200AA56F1 /* IngredientsView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IngredientsView-ViewModel.swift"; sourceTree = "<group>"; };
 		94603F7A29E8075C00AA56F1 /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
+		94603F7C29E8136E00AA56F1 /* AddIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				9404F9FC29E564400097F270 /* MainView.swift */,
 				9404FA0829E56E5E0097F270 /* RecipesView.swift */,
 				9404FA1429E57B250097F270 /* AddDishView.swift */,
+				94603F7C29E8136E00AA56F1 /* AddIngredientView.swift */,
 				94603F7A29E8075C00AA56F1 /* IngredientsView.swift */,
 				9434D4EA29E70B32007107EE /* RecipeDetailsView.swift */,
 			);
@@ -215,6 +218,7 @@
 				9404FA0D29E575FB0097F270 /* FileManager-DocumentsDirectory.swift in Sources */,
 				94603F7B29E8075C00AA56F1 /* IngredientsView.swift in Sources */,
 				9434D4E929E6B941007107EE /* MainView-ViewModel.swift in Sources */,
+				94603F7D29E8136E00AA56F1 /* AddIngredientView.swift in Sources */,
 				9404F9E629E5554B0097F270 /* ContentView.swift in Sources */,
 				94603F7729E7F70900AA56F1 /* Ingredients.swift in Sources */,
 				9404FA1329E578E50097F270 /* RecipesView-ViewModel.swift in Sources */,

@@ -12,16 +12,24 @@ struct Ingredient: Identifiable, Codable, Equatable, Comparable {
     var name: String
     var category: Categories
     
+    init(id: UUID = UUID(), name: String, category: Categories) {
+        self.id = id
+        self.name = name
+        self.category = category
+    }
+    
+    static let example = Ingredient(name: "Poivron", category: .Veggies)
+    
     enum Categories: String, CaseIterable, Codable {
         case EggsMilkProducts = "Eggs, Milk and Milk Products"
         case FatsOil = "Fats and Oils"
-        case Fruits
+        case Fruits = "Fruits"
         case GrainNutsBakingProducts = "Grain, Nuts and Baking Products"
         case HerbsAndSpices = "Herbs and Spices"
         case MeatAndFish = "Meat and Fish"
         case PastaRicePulses = "Pasta, Rice and Pulses"
         case Veggies = "Vegetables"
-        case Others
+        case Others = "Others"
     }
     
     enum CodingKeys: CodingKey {
