@@ -15,10 +15,10 @@
 		9404F9FF29E564500097F270 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404F9FE29E564500097F270 /* LaunchScreen.swift */; };
 		9404FA0229E569DF0097F270 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9404FA0429E569DF0097F270 /* Localizable.strings */; };
 		9404FA0929E56E5E0097F270 /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0829E56E5E0097F270 /* RecipesView.swift */; };
-		9404FA0B29E5722C0097F270 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0A29E5722C0097F270 /* Meal.swift */; };
+		9404FA0B29E5722C0097F270 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0A29E5722C0097F270 /* Dish.swift */; };
 		9404FA0D29E575FB0097F270 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA0C29E575FB0097F270 /* FileManager-DocumentsDirectory.swift */; };
 		9404FA1329E578E50097F270 /* RecipesView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA1229E578E50097F270 /* RecipesView-ViewModel.swift */; };
-		9404FA1529E57B250097F270 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA1429E57B250097F270 /* AddMealView.swift */; };
+		9404FA1529E57B250097F270 /* AddDishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9404FA1429E57B250097F270 /* AddDishView.swift */; };
 		9434D4E929E6B941007107EE /* MainView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434D4E829E6B941007107EE /* MainView-ViewModel.swift */; };
 		9434D4EB29E70B32007107EE /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9434D4EA29E70B32007107EE /* RecipeDetailsView.swift */; };
 /* End PBXBuildFile section */
@@ -34,10 +34,10 @@
 		9404FA0329E569DF0097F270 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9404FA0529E569E10097F270 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9404FA0829E56E5E0097F270 /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
-		9404FA0A29E5722C0097F270 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		9404FA0A29E5722C0097F270 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		9404FA0C29E575FB0097F270 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		9404FA1229E578E50097F270 /* RecipesView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipesView-ViewModel.swift"; sourceTree = "<group>"; };
-		9404FA1429E57B250097F270 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
+		9404FA1429E57B250097F270 /* AddDishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDishView.swift; sourceTree = "<group>"; };
 		9434D4E829E6B941007107EE /* MainView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView-ViewModel.swift"; sourceTree = "<group>"; };
 		9434D4EA29E70B32007107EE /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,7 +98,7 @@
 				9404F9FE29E564500097F270 /* LaunchScreen.swift */,
 				9404F9FC29E564400097F270 /* MainView.swift */,
 				9404FA0829E56E5E0097F270 /* RecipesView.swift */,
-				9404FA1429E57B250097F270 /* AddMealView.swift */,
+				9404FA1429E57B250097F270 /* AddDishView.swift */,
 				9434D4EA29E70B32007107EE /* RecipeDetailsView.swift */,
 			);
 			path = Views;
@@ -116,7 +116,7 @@
 		9404FA0629E56A4B0097F270 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9404FA0A29E5722C0097F270 /* Meal.swift */,
+				9404FA0A29E5722C0097F270 /* Dish.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,8 +208,8 @@
 				9404FA1329E578E50097F270 /* RecipesView-ViewModel.swift in Sources */,
 				9404FA0929E56E5E0097F270 /* RecipesView.swift in Sources */,
 				9404F9FD29E564400097F270 /* MainView.swift in Sources */,
-				9404FA1529E57B250097F270 /* AddMealView.swift in Sources */,
-				9404FA0B29E5722C0097F270 /* Meal.swift in Sources */,
+				9404FA1529E57B250097F270 /* AddDishView.swift in Sources */,
+				9404FA0B29E5722C0097F270 /* Dish.swift in Sources */,
 				9434D4EB29E70B32007107EE /* RecipeDetailsView.swift in Sources */,
 				9404F9E429E5554B0097F270 /* MealPlannerApp.swift in Sources */,
 			);

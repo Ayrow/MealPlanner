@@ -23,12 +23,12 @@ struct MainView: View {
                 Form {
                     ForEach(MealsPlan.DaysOfWeek.allCases, id: \.self) { day in
                                     Section(day.rawValue) {
-                                        ForEach(MealsPlan.MealType.allCases, id: \.self) { mealType in
-                                            Picker(mealType.rawValue, selection: $viewModel.weekMeals[day, mealType]) {
-                                            Text("Pick a Meal").tag(Optional<Meal>(nil))
+                                        ForEach(MealsPlan.Mealtime.allCases, id: \.self) { mealTime in
+                                            Picker(mealTime.rawValue, selection: $viewModel.weekMeals[day, mealTime]) {
+                                            Text("Pick a Dish").tag(Optional<Dish>(nil))
                                                 
-                                                ForEach(recipes.allRecipes.sorted(), id:\.self) { meal in
-                                                    Text(meal.name).tag(meal as Meal?)
+                                                ForEach(recipes.allRecipes.sorted(), id:\.self) { dish in
+                                                    Text(dish.name).tag(dish as Dish?)
                                                         .foregroundColor(.blue)
                                                    }
                                                }

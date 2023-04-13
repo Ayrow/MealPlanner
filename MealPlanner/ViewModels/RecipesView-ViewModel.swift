@@ -10,7 +10,7 @@ import SwiftUI
 
     @MainActor class RecipesViewViewModel: ObservableObject {
         
-        @Published private(set) var allRecipes: [Meal]
+        @Published private(set) var allRecipes: [Dish]
         
         @Published var showAddMealSheet = false
         
@@ -19,7 +19,7 @@ import SwiftUI
         init() {
             do {
                 let mealsListData = try Data(contentsOf: savedPathForRecipes)
-                allRecipes = try JSONDecoder().decode([Meal].self, from: mealsListData)
+                allRecipes = try JSONDecoder().decode([Dish].self, from: mealsListData)
             } catch {
                 allRecipes = []
                 
@@ -35,12 +35,12 @@ import SwiftUI
             }
         }
         
-        func addNewMeal(_ recipe: Meal) {
+        func addNewMeal(_ recipe: Dish) {
             allRecipes.append(recipe)
             saveMealsList()
         }
         
-        func removeMeal(_ recipe: Meal){
+        func removeMeal(_ recipe: Dish){
             allRecipes.removeAll(where: {$0 == recipe})
             saveMealsList()
         }

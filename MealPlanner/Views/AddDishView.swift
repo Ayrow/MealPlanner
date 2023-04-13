@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct AddMealView: View {
+struct AddDishView: View {
     @Environment(\.dismiss) var dismiss
     
-    var meal: Meal
-    var onSave: (Meal) -> Void
+    var dish: Dish
+    var onSave: (Dish) -> Void
     
     @State var name = ""
     @State var recipe = ""
@@ -42,12 +42,12 @@ struct AddMealView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save"){
-                    var newMeal = meal
-                    newMeal.name = name
-                    newMeal.recipe = URL(string: recipe)
-                    newMeal.ingredients = ingredients
+                    var newDish = dish
+                    newDish.name = name
+                    newDish.recipe = recipe
+                    newDish.ingredients = ingredients
                     
-                    onSave(newMeal)
+                    onSave(newDish)
                     dismiss()
                 }
             }
@@ -55,8 +55,8 @@ struct AddMealView: View {
         .navigationTitle("Add Meal")
     }
     
-    init(meal: Meal, onSave: @escaping (Meal) -> Void) {
-        self.meal = meal
+    init(dish: Dish, onSave: @escaping (Dish) -> Void) {
+        self.dish = dish
         self.onSave = onSave
         
         _name = State(initialValue: name)
@@ -68,6 +68,6 @@ struct AddMealView: View {
 
 struct AddMealView_Previews: PreviewProvider {
     static var previews: some View {
-        AddMealView(meal: Meal.example){_ in}
+        AddDishView(dish: Dish.example){_ in}
     }
 }

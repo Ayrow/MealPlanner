@@ -13,7 +13,7 @@ struct RecipesView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                    Text("Here you can see, add, edit or remove all the meals you have in your collection.")
+                    Text("Here you can see, add, edit or remove all the dishes you have in your collection.")
                         .multilineTextAlignment(.center)
                         .padding()
                 
@@ -21,6 +21,9 @@ struct RecipesView: View {
                         ForEach(recipes.allRecipes.sorted(), id:\.id) { meal in
                             NavigationLink {
                                 // MARK: Need a navigation to a Detail View of the Meal
+                                NavigationView {
+                                    RecipeDetailsView(meal: meal)
+                                }
                             } label: {
                                 Text(meal.name)
                             }
@@ -37,17 +40,17 @@ struct RecipesView: View {
                         
                     }
             }
-            .navigationTitle("All Possible Meals")
+            .navigationTitle("Your Dishes")
             .toolbar {
                 Button {
                     recipes.showAddMealSheet.toggle()
                 } label: {
-                    Label("Add meal", systemImage: "plus")
+                    Label("Add dish", systemImage: "plus")
                 }
             }
             .sheet(isPresented: $recipes.showAddMealSheet) {
                 NavigationView {
-                    AddMealView(meal: Meal(id: UUID(), name: "")){ newMeal in
+                    AddDishView(dish: Dish(id: UUID(), name: "", ingredients: [String](), recipe: "")){ newMeal in
                         recipes.addNewMeal(newMeal)
                     }
                 }

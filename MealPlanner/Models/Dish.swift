@@ -7,21 +7,21 @@
 
 import Foundation
 
-struct Meal: Identifiable, Comparable, Equatable, Codable, Hashable {
+struct Dish: Identifiable, Comparable, Equatable, Codable, Hashable {
     var id = UUID()
     var name: String
     var ingredients: [String]?
-    var recipe: URL?
+    var recipe: String?
     
-    static let emptySelection = Meal(id: UUID(), name: "Pick a Meal")
+    static let emptySelection = Dish(id: UUID(), name: "Pick a Meal")
     
-    static let example = Meal(id: UUID(), name: "Pâtes bolognaises", ingredients: ["pâtes", "sauce tomates", "oignons", "carottes", "viande hachée"], recipe: URL(string:  "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx"))
+    static let example = Dish(id: UUID(), name: "Pâtes bolognaises", ingredients: ["pâtes", "sauce tomates", "oignons", "carottes", "viande hachée"], recipe: "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx")
     
-    static func <(lhs: Meal, rhs: Meal) -> Bool {
+    static func <(lhs: Dish, rhs: Dish) -> Bool {
         lhs.name < rhs.name
     }
     
-    static func ==(lhs: Meal, rhs: Meal) -> Bool {
+    static func ==(lhs: Dish, rhs: Dish) -> Bool {
         lhs.id == rhs.id
     }
 }
@@ -32,13 +32,13 @@ struct MealsPlan: Codable, Hashable {
         case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
     }
     
-    enum MealType: String, Codable, CaseIterable {
+    enum Mealtime: String, Codable, CaseIterable {
         case Lunch, Dinner
     }
     
-    private var plannedMeals: [DaysOfWeek: [MealType: Meal?]]
+    private var plannedMeals: [DaysOfWeek: [Mealtime: Dish?]]
     
-    subscript(day: DaysOfWeek, mealType: MealType) -> Meal? {
+    subscript(day: DaysOfWeek, mealType: Mealtime) -> Dish? {
         get { plannedMeals[day]?[mealType] ?? nil }
         set { plannedMeals[day]?[mealType] = newValue }
     }
@@ -46,8 +46,8 @@ struct MealsPlan: Codable, Hashable {
     init() {
         plannedMeals = [:]
         for day in DaysOfWeek.allCases {
-            plannedMeals[day] = [MealType: Meal?]()
-            for mealType in MealType.allCases {
+            plannedMeals[day] = [Mealtime: Dish?]()
+            for mealType in Mealtime.allCases {
                 plannedMeals[day]![mealType] = nil
             }
         }
@@ -56,8 +56,8 @@ struct MealsPlan: Codable, Hashable {
     mutating func reset() {
         plannedMeals = [:]
         for day in DaysOfWeek.allCases {
-            plannedMeals[day] = [MealType: Meal?]()
-            for mealType in MealType.allCases {
+            plannedMeals[day] = [Mealtime: Dish?]()
+            for mealType in Mealtime.allCases {
                 plannedMeals[day]![mealType] = nil
             }
         }

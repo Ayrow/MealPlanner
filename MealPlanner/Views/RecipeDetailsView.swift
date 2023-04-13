@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct RecipeDetailsView: View {
-    var meal: Meal
+    var meal: Dish
     var body: some View {
         
         Form {
             
             Section {
                 Text(meal.name)
+            } header: {
+                Text("Dish Name")
             }
             
             Section {
@@ -23,27 +25,31 @@ struct RecipeDetailsView: View {
                         Text(ingredient)
                     }
                 } else {
-                    Text("No ingredients addes yet.")
+                    Text("No ingredients added yet.")
                 }
             } header: {
                 Text("Ingredients")
             }
             
             Section {
-                if let linkProvided = meal.recipe {
-                    Link("Check the full recipe", destination: linkProvided)
+                if let linkProvided = meal.recipe, meal.recipe != "" {
+                    Link("Check the recipe guide", destination: URL(string: linkProvided)!)
+                    
                 } else {
                     Text("No recipe guide provided yet.")
                 }
+            } header: {
+                Text("Recipe Details")
             }
             
         }
+        .navigationTitle(meal.name)
         
     }
 }
 
 struct RecipeDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailsView(meal: Meal.example)
+        RecipeDetailsView(meal: Dish.example)
     }
 }
