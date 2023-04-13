@@ -22,6 +22,15 @@ struct IngredientsView: View {
                             Section {
                                 ForEach(allIngredients.ingredients.filter {$0.category == category}) { ingredient in
                                     Text(ingredient.name)
+                                        .swipeActions {
+                                            Button(role: .destructive) {
+                                                allIngredients.removeIngredient(ingredient)
+                                            } label: {
+                                                Label("Delete", systemImage: "trash")
+                                            }
+
+                                        }
+
                                 }
                                 
                             } header: {
