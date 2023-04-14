@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddDishView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var allIngredients: IngredientsViewModel
+    @EnvironmentObject var ingredientsVM: IngredientsViewModel
     
     var dish: Dish
     var onSave: (Dish) -> Void
@@ -18,50 +18,43 @@ struct AddDishView: View {
     @State var recipe = ""
     @State var ingredientsRecipe: [Ingredient?] = []
     @State private var selectedIngredient: Ingredient?
-    
+    @State private var showIngredientsPickerSheet = false
     var body: some View {
-        Form {
-            Section("Meal") {
-                TextField("Enter the name of a meal", text: $name)
-            }
-            Section("Recipe") {
-                TextField("Enter the full URL of the recipe", text: $recipe)
-            }
-            Section("Ingredients") {
-                
-                    Picker("Select an ingredient" ,selection: $selectedIngredient) {
-                        Text("Select one").tag(Optional<Ingredient>(nil))
-                        ForEach(allIngredients.ingredients, id:\.self) { ingredient in
-                            Text(ingredient.name).tag(ingredient as Ingredient?)
-                        }
-                    }
-                    .pickerStyle(.menu)
-                
-                Button("Add"){
-                    guard ingredientsRecipe.contains(selectedIngredient) == false, selectedIngredient?.name != "" else {return}
-                    
-                    ingredientsRecipe.append(selectedIngredient)
+        VStack {
+            Form {
+                Section("Meal") {
+                    TextField("Enter the name of a meal", text: $name)
                 }
-                
-                List {
-                    if ingredientsRecipe.isEmpty == false {
-                        ForEach(ingredientsRecipe, id: \.self) { ingredient in
-                            Text(ingredient?.name ?? Ingredient.example.name)
-                                .swipeActions {
-                                    Button(role: .destructive) {
-                                        ingredientsRecipe.removeAll(where: {$0 == ingredient})
-                                    } label: {
-                                        Label("Delete", systemImage: "trash")
+                Section("Recipe") {
+                    TextField("Enter the full URL of the recipe", text: $recipe)
+                }
+                Section("Ingredients") {
+                    List {
+                        if ingredientsRecipe.isEmpty == false {
+                            ForEach(ingredientsRecipe, id: \.self) { ingredient in
+                                Text(ingredient?.name ?? Ingredient.example.name)
+                                    .swipeActions {
+                                        Button(role: .destructive) {
+                                            ingredientsRecipe.removeAll(where: {$0 == ingredient})
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+
                                     }
-
-                                }
+                            }
+                        } else {
+                            Text("No ingredients added yet")
                         }
-                    } else {
-                        Text("No ingredients added yet")
                     }
-                }
 
+                }
+               
             }
+            
+            Button(ingredientsRecipe.isEmpty ? "Add Ingredients" : "Edit Ingredients"){
+                showIngredientsPickerSheet.toggle()
+            }.padding(.top)
+            
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -83,7 +76,12 @@ struct AddDishView: View {
                 .disabled(name.trimmingCharacters(in: .whitespacesAndNewlines) == "")
             }
         }
-        .navigationTitle("Add Meal")
+        .sheet(isPresented: $showIngredientsPickerSheet, content: {
+            NavigationView {
+                PickerIngredientsView(ingredientsRecipe: $ingredientsRecipe)
+            }
+        })
+    .navigationTitle("Add Meal")
     }
     
     init(dish: Dish, onSave: @escaping (Dish) -> Void) {

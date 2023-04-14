@@ -11,7 +11,6 @@ import SwiftUI
     @MainActor class DishesViewViewModel: ObservableObject {
         
         @Published private(set) var allDishes: [Dish]
-        
         @Published var showAddDishSheet = false
         
         let savedPathForDishes = FileManager.documentsDirectory.appendingPathComponent("savedRecipes")
