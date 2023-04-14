@@ -65,7 +65,9 @@ struct AddDishView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("Cancel"){dismiss()}
+                Button("Cancel"){
+                    dismiss()
+                }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Save"){
@@ -88,9 +90,9 @@ struct AddDishView: View {
         self.dish = dish
         self.onSave = onSave
         
-        _name = State(initialValue: name)
-        _recipe = State(initialValue: recipe)
-        _ingredientsRecipe = State(initialValue: ingredientsRecipe)
+        _name = State(initialValue: dish.name)
+        _recipe = State(initialValue: dish.recipe ?? "")
+        _ingredientsRecipe = State(initialValue: dish.ingredients)
     }
     
 }

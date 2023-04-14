@@ -36,6 +36,7 @@ import SwiftUI
         }
         
         func addNewMeal(_ recipe: Dish) {
+            
             allRecipes.append(recipe)
             saveMealsList()
         }

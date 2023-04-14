@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DishView: View {
     @EnvironmentObject var recipes: RecipesViewViewModel
+    @State var mealToEdit = Dish(name: "", ingredients: [])
+    let emptyMealData = Dish(name: "", ingredients: [])
     
     var body: some View {
         NavigationStack {
@@ -32,6 +34,15 @@ struct DishView: View {
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
+                                
+                                Button {
+                                    mealToEdit = meal
+                                    recipes.showAddMealSheet.toggle()
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.orange)
+
 
                             }
                             
@@ -43,13 +54,15 @@ struct DishView: View {
             .toolbar {
                 Button {
                     recipes.showAddMealSheet.toggle()
+                    mealToEdit = emptyMealData
                 } label: {
                     Label("Add dish", systemImage: "plus")
                 }
             }
             .sheet(isPresented: $recipes.showAddMealSheet) {
                 NavigationView {
-                    AddDishView(dish: Dish(id: UUID(), name: "", ingredients: [], recipe: "")){ newMeal in
+                    AddDishView(dish: mealToEdit){ newMeal in
+                        mealToEdit = emptyMealData
                         recipes.addNewMeal(newMeal)
                     }
                 }
