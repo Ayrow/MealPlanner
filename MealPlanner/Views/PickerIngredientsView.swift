@@ -13,20 +13,20 @@ struct PickerIngredientsView: View {
     @Binding var ingredientsRecipe: [Ingredient?]
     @State private var tempIngredients: [Ingredient?] = []
     
+    @State private var searchText = ""
+    
     var body: some View {
         Form {
-            ForEach(Ingredient.Categories.allCases, id:\.self) { category in
-                Section {
-                    ForEach(allIngredients.ingredients.filter {$0.category == category}.sorted {$0.name < $1.name}, id:\.self) { ingredient in
-         
-                        HStack {
-                            
+            if searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                ForEach(Ingredient.Categories.allCases, id:\.self) { category in
+                    Section {
+                        ForEach(allIngredients.ingredients.filter {$0.category == category}.sorted {$0.name < $1.name}, id:\.self) { ingredient in
                             Button {
-                                    if let i = tempIngredients.firstIndex(where: {$0 == ingredient}){
-                                        tempIngredients.remove(at: i)
-                                    } else {
-                                        tempIngredients.append(ingredient)
-                                    }
+                                if let i = tempIngredients.firstIndex(where: {$0 == ingredient}){
+                                    tempIngredients.remove(at: i)
+                                } else {
+                                    tempIngredients.append(ingredient)
+                                }
                                 
                             } label: {
                                 HStack {
@@ -37,15 +37,43 @@ struct PickerIngredientsView: View {
                                         .foregroundColor(tempIngredients.contains(ingredient) ? Color.green : Color.blue)
                                 }
                             }
-                        .tag(ingredient as Ingredient?)
+                            .tag(ingredient as Ingredient?)
+                            .font(.title3)
                         }
-                        .font(.title3)
-            }
+                        
+                    } header: {
+                        Text(category.rawValue)
+                    }
                     
-                } header: {
-                    Text(category.rawValue)
                 }
-                
+            } else {
+                if filteredIngredientsList.isEmpty {
+                    Text("No matching ingredient")
+                } else {
+                    ForEach(filteredIngredientsList.sorted {$0!.name < $1!.name}, id:\.self) { ingredient in
+                        Button {
+                            if let i = tempIngredients.firstIndex(where: {$0 == ingredient}){
+                                tempIngredients.remove(at: i)
+                            } else {
+                                tempIngredients.append(ingredient)
+                            }
+                            
+                        } label: {
+                            HStack {
+                                Text(ingredient!.name)
+                                    .foregroundColor(Color.primary)
+                                Spacer()
+                                Image(systemName: tempIngredients.contains(ingredient) ? "checkmark" : "plus.circle")
+                                    .foregroundColor(tempIngredients.contains(ingredient) ? Color.green : Color.blue)
+                            }
+                        }
+                        .tag(ingredient as Ingredient?)
+                        .font(.title3)
+                    }
+                }
+
+
+                                
             }
         }
         .navigationTitle("Select the ingredients")
@@ -65,6 +93,14 @@ struct PickerIngredientsView: View {
         .onAppear {
             tempIngredients = ingredientsRecipe
         }
+        .searchable(text: $searchText, prompt: "Search Ingredients")
+    }
+    
+    var filteredIngredientsList: [Ingredient?] {
+        withAnimation {
+            allIngredients.ingredients.filter { $0.name.contains(searchText)        }
+        }
+        
     }
     
 }
