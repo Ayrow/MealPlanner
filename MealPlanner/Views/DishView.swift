@@ -20,7 +20,6 @@ struct DishView: View {
                     List {
                         ForEach(recipes.allRecipes.sorted(), id:\.id) { meal in
                             NavigationLink {
-                                // MARK: Need a navigation to a Detail View of the Meal
                                 NavigationView {
                                     RecipeDetailsView(meal: meal)
                                 }

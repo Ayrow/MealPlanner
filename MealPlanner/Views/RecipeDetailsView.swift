@@ -21,7 +21,15 @@ struct RecipeDetailsView: View {
             }
             
             Section {
-                Text("hello")
+                
+                if meal.ingredients.isEmpty == false {
+                    ForEach(meal.ingredients.sorted {$0!.name < $1!.name}, id:\.self) { ingredient in
+                        Text(ingredient!.name)
+                    }
+                } else {
+                    Text("No ingredients added yet")
+                }
+            
             } header: {
                 Text("Ingredients")
             }
@@ -34,7 +42,7 @@ struct RecipeDetailsView: View {
                     Text("No recipe guide provided yet.")
                 }
             } header: {
-                Text("Recipe Details")
+                Text("Recipe Guide")
             }
             
         }
