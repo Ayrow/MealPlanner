@@ -36,8 +36,11 @@ import SwiftUI
         }
         
         func addNewMeal(_ recipe: Dish) {
-            
-            allRecipes.append(recipe)
+            if let i = allRecipes.firstIndex(where: {$0 == recipe}){
+                allRecipes[i] = recipe
+            } else {
+                allRecipes.append(recipe)
+            }
             saveMealsList()
         }
         
