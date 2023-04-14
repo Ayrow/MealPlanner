@@ -10,6 +10,7 @@ import Foundation
 class IngredientsViewModel: ObservableObject {
     @Published private(set) var ingredients: [Ingredient]
     @Published var showAddIngredientSheet = false
+    @Published var ingredientSearch = ""
     
     let savedPath = FileManager.documentsDirectory.appendingPathComponent("savedIngredients")
     
