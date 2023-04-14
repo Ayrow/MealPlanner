@@ -14,10 +14,6 @@ struct IngredientsView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                    Text("Here you can see, add or remove all the ingredients you have in your collection.")
-                        .multilineTextAlignment(.center)
-                        .padding()
-                
                     List {
                         if searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                             ForEach(Ingredient.Categories.allCases, id:\.self) { category in

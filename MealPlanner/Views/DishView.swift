@@ -11,16 +11,13 @@ struct DishView: View {
     @EnvironmentObject var dishesVM: DishesViewViewModel
     @State var mealToEdit = Dish(name: "", ingredients: [])
     let emptyMealData = Dish(name: "", ingredients: [])
+    @State private var searchText = ""
     
     var body: some View {
         NavigationStack {
             VStack {
-                    Text("Here you can see, add, edit or remove all the dishes you have in your collection.")
-                        .multilineTextAlignment(.center)
-                        .padding()
-                
                     List {
-                        ForEach(dishesVM.allDishes.sorted(), id:\.id) { meal in
+                        ForEach(filteredDishes.sorted(), id:\.id) { meal in
                             NavigationLink {
                                 NavigationView {
                                     DishDetailsView(dish: meal)
@@ -50,6 +47,7 @@ struct DishView: View {
                         
                     }
             }
+            .searchable(text: $searchText, prompt: "Search for a dish")
             .navigationTitle("Your Dishes")
             .toolbar {
                 Button {
@@ -70,6 +68,13 @@ struct DishView: View {
         }
     }
    
+    var filteredDishes: [Dish] {
+        if searchText.isEmpty {
+            return dishesVM.allDishes
+        } else {
+            return dishesVM.allDishes.filter {$0.name.contains(searchText)}
+        }
+    }
     
 }
 
