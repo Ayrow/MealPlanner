@@ -14,9 +14,10 @@ enum Days: String, CaseIterable {
 struct MainView: View {
     @StateObject var viewModel = MainViewViewModel()
     @EnvironmentObject var dishesVM: DishesViewViewModel
-    
-   // private let timeOfDay = ["Lunch", "Dinner", "Lunch + Dinner"]
-    // @State private var selectedMealType = "Dinner"
+    @State private var showPickerDishView = false
+    @State private var tempDay = MealsPlan.DaysOfWeek.Monday
+    @State private var tempMealtime = MealsPlan.Mealtime.Lunch
+    @State private var showDishDetailsSheet = false
     
     var body: some View {
         NavigationStack {
@@ -24,16 +25,33 @@ struct MainView: View {
                     ForEach(MealsPlan.DaysOfWeek.allCases, id: \.self) { day in
                                     Section(day.rawValue) {
                                         ForEach(MealsPlan.Mealtime.allCases, id: \.self) { mealTime in
-                                            Picker(mealTime.rawValue, selection: $viewModel.weekMeals[day, mealTime]) {
-                                            Text("Pick a Dish").tag(Optional<Dish>(nil))
+                                            
+                                            HStack {
+                                                Text(mealTime.rawValue)
+                                                Spacer()
+                                                Button {
+                                                    tempDay = day
+                                                    tempMealtime = mealTime
+                                                    showPickerDishView.toggle()
+                                                } label: {
+                                                    HStack {
+                                                        Text(viewModel.weekMeals[day, mealTime]?.name ?? "Pick a meal")
+                                                        Image(systemName: "chevron.right")
+                                                    }
+                                                }
+                                            }
+                                            .contextMenu {
+                                                if viewModel.weekMeals[day, mealTime] != nil {
+                                                    Button("Show recipe"){
+                                                        tempDay = day
+                                                        tempMealtime = mealTime
+                                                        showDishDetailsSheet.toggle()
+                                                    }
+                                                }
                                                 
-                                                ForEach(dishesVM.allDishes.sorted(), id:\.self) { dish in
-                                                    Text(dish.name).tag(dish as Dish?)
-                                                        .foregroundColor(.blue)
-                                                   }
-                                               }
-                                               .pickerStyle(.navigationLink)
-                                           }
+
+                                            }
+                                            }
                                        }
                                        .headerProminence(.increased)
                                    }
@@ -46,6 +64,16 @@ struct MainView: View {
                     Button("Clear All"){
                         viewModel.weekMeals.reset()
                     }
+                }
+                .sheet(isPresented: $showPickerDishView) {
+                    NavigationView {
+                        PickerDishView(day: tempDay, mealTime: tempMealtime){ dish in
+                            viewModel.weekMeals[tempDay, tempMealtime] = dish
+                        }
+                    }
+                }
+                .sheet(isPresented: $showDishDetailsSheet) {
+                    DishDetailsView(dish: viewModel.weekMeals[tempDay, tempMealtime]!)
                 }
         }
     }

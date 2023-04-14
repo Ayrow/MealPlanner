@@ -26,6 +26,7 @@
 		94603F7B29E8075C00AA56F1 /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94603F7A29E8075C00AA56F1 /* IngredientsView.swift */; };
 		94603F7D29E8136E00AA56F1 /* AddIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94603F7C29E8136E00AA56F1 /* AddIngredientView.swift */; };
 		94B8593F29E9533500AB3D73 /* PickerIngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B8593E29E9533500AB3D73 /* PickerIngredientsView.swift */; };
+		94D3574129E9B21500F651D4 /* PickerDishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D3574029E9B21400F651D4 /* PickerDishView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		94603F7A29E8075C00AA56F1 /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
 		94603F7C29E8136E00AA56F1 /* AddIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientView.swift; sourceTree = "<group>"; };
 		94B8593E29E9533500AB3D73 /* PickerIngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerIngredientsView.swift; sourceTree = "<group>"; };
+		94D3574029E9B21400F651D4 /* PickerDishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDishView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				9404FA0829E56E5E0097F270 /* DishView.swift */,
 				9404FA1429E57B250097F270 /* AddDishView.swift */,
 				94B8593E29E9533500AB3D73 /* PickerIngredientsView.swift */,
+				94D3574029E9B21400F651D4 /* PickerDishView.swift */,
 				94603F7C29E8136E00AA56F1 /* AddIngredientView.swift */,
 				94603F7A29E8075C00AA56F1 /* IngredientsView.swift */,
 				9434D4EA29E70B32007107EE /* DishDetailsView.swift */,
@@ -221,6 +224,7 @@
 				9404FA0D29E575FB0097F270 /* FileManager-DocumentsDirectory.swift in Sources */,
 				94603F7B29E8075C00AA56F1 /* IngredientsView.swift in Sources */,
 				9434D4E929E6B941007107EE /* MainView-ViewModel.swift in Sources */,
+				94D3574129E9B21500F651D4 /* PickerDishView.swift in Sources */,
 				94603F7D29E8136E00AA56F1 /* AddIngredientView.swift in Sources */,
 				9404F9E629E5554B0097F270 /* ContentView.swift in Sources */,
 				94603F7729E7F70900AA56F1 /* Ingredients.swift in Sources */,
