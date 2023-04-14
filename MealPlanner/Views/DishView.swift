@@ -15,8 +15,10 @@ struct DishView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                    List {
+                List {
+                    if filteredDishes.isEmpty {
+                        Text("No dish found")
+                    } else {
                         ForEach(filteredDishes.sorted(), id:\.id) { meal in
                             NavigationLink {
                                 NavigationView {
@@ -44,9 +46,10 @@ struct DishView: View {
                             }
                             
                         }
-                        
                     }
-            }
+                    
+                }
+            
             .searchable(text: $searchText, prompt: "Search for a dish")
             .navigationTitle("Your Dishes")
             .toolbar {
