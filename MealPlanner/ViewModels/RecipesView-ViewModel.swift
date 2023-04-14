@@ -8,45 +8,45 @@
 import Foundation
 import SwiftUI
 
-    @MainActor class RecipesViewViewModel: ObservableObject {
+    @MainActor class DishesViewViewModel: ObservableObject {
         
-        @Published private(set) var allRecipes: [Dish]
+        @Published private(set) var allDishes: [Dish]
         
-        @Published var showAddMealSheet = false
+        @Published var showAddDishSheet = false
         
-        let savedPathForRecipes = FileManager.documentsDirectory.appendingPathComponent("savedRecipes")
+        let savedPathForDishes = FileManager.documentsDirectory.appendingPathComponent("savedRecipes")
         
         init() {
             do {
-                let mealsListData = try Data(contentsOf: savedPathForRecipes)
-                allRecipes = try JSONDecoder().decode([Dish].self, from: mealsListData)
+                let dishesData = try Data(contentsOf: savedPathForDishes)
+                allDishes = try JSONDecoder().decode([Dish].self, from: dishesData)
             } catch {
-                allRecipes = []
+                allDishes = []
                 
             }
         }
         
-        func saveMealsList() {
+        func saveDishesList() {
             do {
-                let data = try JSONEncoder().encode(allRecipes)
-                try data.write(to: savedPathForRecipes)
+                let data = try JSONEncoder().encode(allDishes)
+                try data.write(to: savedPathForDishes)
             } catch {
                 print("Cannot save to meals list")
             }
         }
         
-        func addNewMeal(_ recipe: Dish) {
-            if let i = allRecipes.firstIndex(where: {$0 == recipe}){
-                allRecipes[i] = recipe
+        func addDish(_ recipe: Dish) {
+            if let i = allDishes.firstIndex(where: {$0 == recipe}){
+                allDishes[i] = recipe
             } else {
-                allRecipes.append(recipe)
+                allDishes.append(recipe)
             }
-            saveMealsList()
+            saveDishesList()
         }
         
-        func removeMeal(_ recipe: Dish){
-            allRecipes.removeAll(where: {$0 == recipe})
-            saveMealsList()
+        func deleteDish(_ recipe: Dish){
+            allDishes.removeAll(where: {$0 == recipe})
+            saveDishesList()
         }
     
         

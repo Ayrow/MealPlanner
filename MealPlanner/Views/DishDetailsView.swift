@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-struct RecipeDetailsView: View {
-    var meal: Dish
+struct DishDetailsView: View {
+    var dish: Dish
     
     var body: some View {
         
         Form {
             
             Section {
-                Text(meal.name)
+                Text(dish.name)
             } header: {
                 Text("Dish Name")
             }
             
             Section {
                 
-                if meal.ingredients.isEmpty == false {
-                    ForEach(meal.ingredients.sorted {$0!.name < $1!.name}, id:\.self) { ingredient in
+                if dish.ingredients.isEmpty == false {
+                    ForEach(dish.ingredients.sorted {$0!.name < $1!.name}, id:\.self) { ingredient in
                         Text(ingredient!.name)
                     }
                 } else {
@@ -35,7 +35,7 @@ struct RecipeDetailsView: View {
             }
             
             Section {
-                if let linkProvided = meal.recipe, meal.recipe != "" {
+                if let linkProvided = dish.recipe, dish.recipe != "" {
                     Link("Check the recipe guide", destination: URL(string: linkProvided)!)
                     
                 } else {
@@ -46,13 +46,13 @@ struct RecipeDetailsView: View {
             }
             
         }
-        .navigationTitle(meal.name)
+        .navigationTitle(dish.name)
         
     }
 }
 
 struct RecipeDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailsView(meal: Dish.example)
+        DishDetailsView(dish: Dish.example)
     }
 }

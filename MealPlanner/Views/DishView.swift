@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DishView: View {
-    @EnvironmentObject var recipes: RecipesViewViewModel
+    @EnvironmentObject var dishesVM: DishesViewViewModel
     @State var mealToEdit = Dish(name: "", ingredients: [])
     let emptyMealData = Dish(name: "", ingredients: [])
     
@@ -20,24 +20,24 @@ struct DishView: View {
                         .padding()
                 
                     List {
-                        ForEach(recipes.allRecipes.sorted(), id:\.id) { meal in
+                        ForEach(dishesVM.allDishes.sorted(), id:\.id) { meal in
                             NavigationLink {
                                 NavigationView {
-                                    RecipeDetailsView(meal: meal)
+                                    DishDetailsView(dish: meal)
                                 }
                             } label: {
                                 Text(meal.name)
                             }
                             .swipeActions {
                                 Button(role: .destructive) {
-                                    recipes.removeMeal(meal)
+                                    dishesVM.deleteDish(meal)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
                                 
                                 Button {
                                     mealToEdit = meal
-                                    recipes.showAddMealSheet.toggle()
+                                    dishesVM.showAddDishSheet.toggle()
                                 } label: {
                                     Label("Edit", systemImage: "pencil")
                                 }
@@ -53,17 +53,17 @@ struct DishView: View {
             .navigationTitle("Your Dishes")
             .toolbar {
                 Button {
-                    recipes.showAddMealSheet.toggle()
+                    dishesVM.showAddDishSheet.toggle()
                     mealToEdit = emptyMealData
                 } label: {
                     Label("Add dish", systemImage: "plus")
                 }
             }
-            .sheet(isPresented: $recipes.showAddMealSheet) {
+            .sheet(isPresented: $dishesVM.showAddDishSheet) {
                 NavigationView {
                     AddDishView(dish: mealToEdit){ newMeal in
                         mealToEdit = emptyMealData
-                        recipes.addNewMeal(newMeal)
+                        dishesVM.addDish(newMeal)
                     }
                 }
             }
@@ -76,6 +76,6 @@ struct DishView: View {
 struct AllPossibleMealsView_Previews: PreviewProvider {
     static var previews: some View {
         DishView()
-            .environmentObject(RecipesViewViewModel())
+            .environmentObject(DishesViewViewModel())
     }
 }

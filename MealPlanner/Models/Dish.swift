@@ -17,7 +17,7 @@ struct Dish: Identifiable, Codable, Comparable, Equatable, Hashable {
         hasher.combine(ingredients)
     }
     
-    static let emptySelection = Dish(id: UUID(), name: "Pick a Meal", ingredients: [Ingredient(name: "Pates", category: .Fruits)])
+    static let emptySelection = Dish(id: UUID(), name: "Pick a Dish", ingredients: [Ingredient(name: "Pates", category: .Fruits)])
     
     static let example = Dish(id: UUID(), name: "Pâtes bolognaises", ingredients: [], recipe: "https://www.marmiton.org/recettes/recette_pates-a-la-bolognaise-facile_20482.aspx")
     

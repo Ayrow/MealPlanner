@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var splashLoaded = false
-    @StateObject var recipes = RecipesViewViewModel()
-    @StateObject var allIngredients = IngredientsViewModel()
+    @StateObject var dishesVM = DishesViewViewModel()
+    @StateObject var ingredientsVM = IngredientsViewModel()
     
     var body: some View {
         if splashLoaded {
@@ -19,20 +19,20 @@ struct ContentView: View {
                     .tabItem {
                         Label("Meals Plan", systemImage: "calendar")
                     }
-                    .environmentObject(recipes)
+                    .environmentObject(dishesVM)
                 
                 DishView()
                     .tabItem {
                         Label("Recipes", systemImage: "book")
                     }
-                    .environmentObject(recipes)
-                    .environmentObject(allIngredients)
+                    .environmentObject(dishesVM)
+                    .environmentObject(ingredientsVM)
                 
                 IngredientsView()
                     .tabItem {
                         Label("Ingredients", systemImage: "fork.knife")
                     }
-                    .environmentObject(allIngredients)
+                    .environmentObject(ingredientsVM)
             }
             
         } else {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IngredientsView: View {
-    @EnvironmentObject var allIngredients: IngredientsViewModel
+    @EnvironmentObject var ingredientsVM: IngredientsViewModel
     
     var body: some View {
         NavigationStack {
@@ -20,11 +20,11 @@ struct IngredientsView: View {
                     List {
                         ForEach(Ingredient.Categories.allCases, id:\.self) { category in
                             Section {
-                                ForEach(allIngredients.ingredients.filter {$0.category == category}.sorted {$0.name < $1.name}) { ingredient in
+                                ForEach(ingredientsVM.ingredients.filter {$0.category == category}.sorted {$0.name < $1.name}) { ingredient in
                                     Text(ingredient.name)
                                         .swipeActions {
                                             Button(role: .destructive) {
-                                                allIngredients.removeIngredient(ingredient)
+                                                ingredientsVM.removeIngredient(ingredient)
                                             } label: {
                                                 Label("Delete", systemImage: "trash")
                                             }
@@ -44,15 +44,15 @@ struct IngredientsView: View {
             .navigationTitle("Your Ingredients")
             .toolbar {
                 Button {
-                    allIngredients.showAddIngredientSheet.toggle()
+                    ingredientsVM.showAddIngredientSheet.toggle()
                 } label: {
                     Label(LocalizedStringKey("Add ingredient"), systemImage: "plus")
                 }
             }
-            .sheet(isPresented: $allIngredients.showAddIngredientSheet) {
+            .sheet(isPresented: $ingredientsVM.showAddIngredientSheet) {
                 NavigationView {
                     AddIngredientView(ingredient: Ingredient(name: "", category: Ingredient.Categories.Others)) { newIngredient in
-                        allIngredients.addIngredient(newIngredient)
+                        ingredientsVM.addIngredient(newIngredient)
                     }
                 }
             }
