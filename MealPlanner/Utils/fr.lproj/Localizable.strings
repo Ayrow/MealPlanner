@@ -1,8 +1,71 @@
-/* 
-  Localizable.strings
-  MealPlanner
+// MARK: Tab Items
 
-  Created by Aymeric Pilaert on 11/04/2023.
-  
-*/
+"Meals Plan" = "Planning Repas";
+"Recipes" = "Recettes";
+"Ingredients" = "Ingrédients";
 
+// MARK: Titles
+"My Recipes" = "Mes Recettes";
+"My Dishes" = "Mes Plats";
+"My Ingredients" = "Mes Ingrédients";
+"Add Dish" = "Ajouter un Plat";
+"Dish name" = "Nom du Plat";
+"Recipe" = "Recette";
+"Ingredients" = "Ingrédients";
+
+// MARK: Days of the week
+
+"Monday" = "Lundi";
+"Tuesday" = "Mardi";
+"Wednesday" = "Mercredi";
+"Thursday" = "Jeudi";
+"Friday" = "Vendredi";
+"Saturday" = "Samedi";
+"Sunday" = "Dimanche";
+
+// MARK: Mealtime
+"Lunch" = "Midi";
+"Dinner" = "Soir";
+
+
+// MARK: Ingredients Categories
+
+"Eggs, Milk and Milk Products" = "Oeufs, Lait et Produits Laitiers";
+"Fats and Oils" = "Huiles et Graisses";
+"Fruits" = "Fruits";
+"Grain, Nuts and Baking Products" = "Graines, Fruits à coques et Aides Boulangerie";
+"Herbs and Spices" = "Herbes et épices";
+"Meat and Fish" = "Viande et Poisson";
+"Pasta, Rice and Pulses" = "Pâtes, riz et légumineuses";
+"Vegetables" = "Légumes";
+"Others" = "Autres";
+
+
+// MARK: Buttons
+
+"Clear All" = "Tout supprimer";
+"Add More" = "Ajouter plus";
+"Save" = "Enregistrer";
+"Cancel" = "Annuler";
+"Pick a Dish" = "Choisis un plat";
+
+
+// MARK: Other texts
+
+"Search for Dish" = "Chercher un plat";
+"No dish found" = "Aucun plat trouvé";
+"Search Ingredient" = "Chercher ingrédient";
+"No matching ingredient" = "Pas d'ingrédient trouvé";
+"Add Ingredient" = "Ajouter ingrédient";
+"Category" = "Catégorie";
+"Select one below" = "Choisir ci-dessous";
+"Ingredient Name" = "Nom d'ingrédient";
+"Enter name of the dish" = "Choisir un nom de plat";
+"Enter the full URL for the recipe" = "Entrer le lien vers la recette";
+"No ingredients added yet" = "Pas d'ingrédient pour le moment";
+"Add Ingredients" = "Ajouter ingrédients";
+"Edit Ingredients" = "Modifier Ingrédients";
+"Search for a dish" = "Chercher un plat";
+"Pick a meal" = "Choisis un plat";
+"Select the ingredients" = "Choisis les ingrédients";
+"Done" = "Terminé";

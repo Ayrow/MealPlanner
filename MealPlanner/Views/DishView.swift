@@ -51,7 +51,7 @@ struct DishView: View {
                 }
             
             .searchable(text: $searchText, prompt: "Search for a dish")
-            .navigationTitle("Your Dishes")
+            .navigationTitle("My Dishes")
             .toolbar {
                 Button {
                     dishesVM.showAddDishSheet.toggle()

@@ -22,11 +22,12 @@ struct AddDishView: View {
     var body: some View {
         VStack {
             Form {
-                Section("Meal") {
-                    TextField("Enter the name of a meal", text: $name)
+                Section("Dish name") {
+                    TextField("Enter name of the dish", text: $name)
                 }
                 Section("Recipe") {
-                    TextField("Enter the full URL of the recipe", text: $recipe)
+                    TextField("Enter the full URL for the recipe", text: $recipe)
+                    
                 }
                 Section("Ingredients") {
                     List {
@@ -81,7 +82,7 @@ struct AddDishView: View {
                 PickerIngredientsView(ingredientsRecipe: $ingredientsRecipe)
             }
         })
-    .navigationTitle("Add Meal")
+    .navigationTitle("Add Dish")
     }
     
     init(dish: Dish, onSave: @escaping (Dish) -> Void) {

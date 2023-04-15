@@ -23,11 +23,11 @@ struct MainView: View {
         NavigationStack {
                 Form {
                     ForEach(MealsPlan.DaysOfWeek.allCases, id: \.self) { day in
-                                    Section(day.rawValue) {
+                                    Section(LocalizedStringKey(day.rawValue)) {
                                         ForEach(MealsPlan.Mealtime.allCases, id: \.self) { mealTime in
                                             
                                             HStack {
-                                                Text(mealTime.rawValue)
+                                                Text(LocalizedStringKey(mealTime.rawValue))
                                                 Spacer()
                                                 Button {
                                                     tempDay = day
@@ -35,7 +35,7 @@ struct MainView: View {
                                                     showPickerDishView.toggle()
                                                 } label: {
                                                     HStack {
-                                                        Text(viewModel.weekMeals[day, mealTime]?.name ?? "Pick a meal")
+                                                        Text(viewModel.weekMeals[day, mealTime]?.name ?? "Pick a Dish")
                                                         Image(systemName: "chevron.right")
                                                     }
                                                 }

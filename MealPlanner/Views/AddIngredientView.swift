@@ -26,7 +26,7 @@ struct AddIngredientView: View {
             Section {
                 Picker(selection: $category) {
                     ForEach(Ingredient.Categories.allCases, id:\.self) { category in
-                        Text(category.rawValue)
+                        Text(LocalizedStringKey(category.rawValue))
                     }
                 } label: {
                     Label("Select one below", systemImage: "hand.point.down")

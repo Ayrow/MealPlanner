@@ -32,7 +32,7 @@ struct IngredientsView: View {
                                     }
                                     
                                 } header: {
-                                    Text(category.rawValue)
+                                    Text(LocalizedStringKey(category.rawValue))
                                 }
                                 
                             }
@@ -61,7 +61,7 @@ struct IngredientsView: View {
                     }
             }
             .searchable(text: $searchText, prompt: "Search Ingredient")
-            .navigationTitle("Your Ingredients")
+            .navigationTitle("My Ingredients")
             .toolbar {
                 Button {
                     ingredientsVM.showAddIngredientSheet.toggle()

@@ -42,7 +42,7 @@ struct PickerIngredientsView: View {
                         }
                         
                     } header: {
-                        Text(category.rawValue)
+                        Text(LocalizedStringKey(category.rawValue))
                     }
                     
                 }

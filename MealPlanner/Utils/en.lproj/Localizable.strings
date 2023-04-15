@@ -13,10 +13,11 @@
 "Ingredients" = "Ingredients";
 
 // MARK: Titles
-"Your Recipes" = "Your Recipes";
-"Your Ingredients" = "Your Ingredients";
+"My Recipes" = "My Recipes";
+"My Dishes" = "My Dishes";
+"My Ingredients" = "My Ingredients";
 "Add Dish" = "Add Dish";
-"Meal Name" = "Meal Name";
+"Dish name" = "Dish name";
 "Recipe" = "Recipe";
 "Ingredients" = "Ingredients";
 
@@ -31,8 +32,8 @@
 "Sunday" = "Sunday";
 
 // MARK: Mealtime
-"Lunch" = "Midi";
-"Dinner" = "Soir";
+"Lunch" = "Lunch";
+"Dinner" = "Dinner";
 
 
 // MARK: Ingredients Categories
@@ -59,3 +60,20 @@
 
 // MARK: Other texts
 
+"Search for Dish" = "Search for Dish";
+"No dish found" = "No dish found";
+"Search Ingredient" = "Search Ingredient";
+"No matching ingredient" = "No matching ingredient";
+"Add Ingredient" = "Add Ingredient";
+"Category" = "Category";
+"Select one below" = "Select one below";
+"Ingredient Name" = "Ingredient Name";
+"Enter name of the dish" = "Enter name of the dish";
+"Enter the full URL for the recipe" = "Enter the full URL for the recipe";
+"No ingredients added yet" = "No ingredients added yet";
+"Add Ingredients" = "Add Ingredients";
+"Edit Ingredients" = "Edit Ingredients";
+"Search for a dish" = "Search for a dish";
+"Pick a meal" = "Pick a meal";
+"Select the ingredients" = "Select the ingredients";
+"Done" = "Done";
