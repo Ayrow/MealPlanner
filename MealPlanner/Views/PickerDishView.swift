@@ -12,8 +12,6 @@ struct PickerDishView: View {
     @EnvironmentObject var dishesVM: DishesViewViewModel
     @ObservedObject var viewModel = MainViewViewModel()
     
-    @State private var searchText = ""
-    
     var onSave: (Dish) -> Void
     var day: MealsPlan.DaysOfWeek
     var mealTime: MealsPlan.Mealtime
@@ -58,7 +56,7 @@ struct PickerDishView: View {
                
                }
            }
-           .searchable(text: $searchText, prompt: "Search for Dish")
+           .searchable(text: $dishesVM.searchDishes, prompt: "Search for Dish")
         }
     init(day: MealsPlan.DaysOfWeek, mealTime: MealsPlan.Mealtime, onSave: @escaping (Dish) -> Void) {
         self.onSave = onSave
@@ -67,10 +65,10 @@ struct PickerDishView: View {
     }
     
     var filteredDishes: [Dish?] {
-        if searchText.isEmpty {
+        if dishesVM.searchDishes.isEmpty {
             return dishesVM.allDishes
         } else {
-            return dishesVM.allDishes.filter { $0.name.contains(searchText) }.sorted()
+            return dishesVM.allDishes.filter { $0.name.contains(dishesVM.searchDishes) }.sorted()
         }
     }
     

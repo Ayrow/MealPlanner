@@ -23,38 +23,36 @@ struct MainView: View {
         NavigationStack {
                 Form {
                     ForEach(MealsPlan.DaysOfWeek.allCases, id: \.self) { day in
-                                    Section(LocalizedStringKey(day.rawValue)) {
-                                        ForEach(MealsPlan.Mealtime.allCases, id: \.self) { mealTime in
-                                            
-                                            HStack {
-                                                Text(LocalizedStringKey(mealTime.rawValue))
-                                                Spacer()
-                                                Button {
-                                                    tempDay = day
-                                                    tempMealtime = mealTime
-                                                    showPickerDishView.toggle()
-                                                } label: {
-                                                    HStack {
-                                                        Text(viewModel.weekMeals[day, mealTime]?.name ?? "Pick a Dish")
-                                                        Image(systemName: "chevron.right")
-                                                    }
-                                                }
-                                            }
-                                            .contextMenu {
-                                                if viewModel.weekMeals[day, mealTime] != nil {
-                                                    Button("Show recipe"){
-                                                        tempDay = day
-                                                        tempMealtime = mealTime
-                                                        showDishDetailsSheet.toggle()
-                                                    }
-                                                }
-                                                
-
-                                            }
-                                            }
-                                       }
-                                       .headerProminence(.increased)
-                                   }
+                        Section(LocalizedStringKey(day.rawValue)) {
+                            ForEach(MealsPlan.Mealtime.allCases, id: \.self) { mealTime in
+                                
+                                HStack {
+                                    Text(LocalizedStringKey(mealTime.rawValue))
+                                    Spacer()
+                                    Button {
+                                        tempDay = day
+                                        tempMealtime = mealTime
+                                        showPickerDishView.toggle()
+                                    } label: {
+                                        HStack {
+                                            Text(viewModel.weekMeals[day, mealTime]?.name ?? "Pick a Dish")
+                                            Image(systemName: "chevron.right")
+                                        }
+                                    }
+                                }
+                                .contextMenu {
+                                    if viewModel.weekMeals[day, mealTime] != nil {
+                                        Button("Show recipe"){
+                                            tempDay = day
+                                            tempMealtime = mealTime
+                                            showDishDetailsSheet.toggle()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                           .headerProminence(.increased)
+                    }
                 }
                 .onChange(of: viewModel.weekMeals, perform: { _ in
                     viewModel.saveWeekMeals()

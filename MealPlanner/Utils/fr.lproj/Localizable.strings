@@ -43,7 +43,7 @@
 
 // MARK: Buttons
 
-"Clear All" = "Tout supprimer";
+"Clear All" = "Réinitialiser";
 "Add More" = "Ajouter plus";
 "Save" = "Enregistrer";
 "Cancel" = "Annuler";
@@ -66,6 +66,6 @@
 "Add Ingredients" = "Ajouter ingrédients";
 "Edit Ingredients" = "Modifier Ingrédients";
 "Search for a dish" = "Chercher un plat";
-"Pick a meal" = "Choisis un plat";
+"Pick a Dish" = "Choisis un Plat";
 "Select the ingredients" = "Choisis les ingrédients";
 "Done" = "Terminé";

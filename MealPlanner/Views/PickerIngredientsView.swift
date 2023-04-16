@@ -9,18 +9,16 @@ import SwiftUI
 
 struct PickerIngredientsView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var allIngredients: IngredientsViewModel
+    @EnvironmentObject var ingredientsVM: IngredientsViewModel
     @Binding var ingredientsRecipe: [Ingredient?]
     @State private var tempIngredients: [Ingredient?] = []
     
-    @State private var searchText = ""
-    
     var body: some View {
         Form {
-            if searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            if ingredientsVM.ingredientSearch.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 ForEach(Ingredient.Categories.allCases, id:\.self) { category in
                     Section {
-                        ForEach(allIngredients.ingredients.filter {$0.category == category}.sorted {$0.name < $1.name}, id:\.self) { ingredient in
+                        ForEach(ingredientsVM.ingredients.filter {$0.category == category}.sorted {$0.name < $1.name}, id:\.self) { ingredient in
                             Button {
                                 if let i = tempIngredients.firstIndex(where: {$0 == ingredient}){
                                     tempIngredients.remove(at: i)
@@ -93,14 +91,14 @@ struct PickerIngredientsView: View {
         .onAppear {
             tempIngredients = ingredientsRecipe
         }
-        .searchable(text: $searchText, prompt: "Search Ingredients")
+        .searchable(text: $ingredientsVM.ingredientSearch, prompt: "Search Ingredients")
     }
     
     var filteredIngredientsList: [Ingredient?] {
         withAnimation {
-            allIngredients.ingredients.filter { $0.name.contains(searchText)        }
+            ingredientsVM.ingredients.filter { $0.name.contains(ingredientsVM.ingredientSearch)
+            }
         }
-        
     }
     
 }

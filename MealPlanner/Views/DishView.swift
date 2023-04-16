@@ -11,7 +11,6 @@ struct DishView: View {
     @EnvironmentObject var dishesVM: DishesViewViewModel
     @State var mealToEdit = Dish(name: "", ingredients: [])
     let emptyMealData = Dish(name: "", ingredients: [])
-    @State private var searchText = ""
     
     var body: some View {
         NavigationStack {
@@ -50,7 +49,7 @@ struct DishView: View {
                     
                 }
             
-            .searchable(text: $searchText, prompt: "Search for a dish")
+                .searchable(text: $dishesVM.searchDishes, prompt: "Search for a dish")
             .navigationTitle("My Dishes")
             .toolbar {
                 Button {
@@ -72,10 +71,10 @@ struct DishView: View {
     }
    
     var filteredDishes: [Dish] {
-        if searchText.isEmpty {
+        if dishesVM.searchDishes.isEmpty {
             return dishesVM.allDishes
         } else {
-            return dishesVM.allDishes.filter {$0.name.contains(searchText)}
+            return dishesVM.allDishes.filter {$0.name.contains(dishesVM.searchDishes)}
         }
     }
     

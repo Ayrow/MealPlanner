@@ -9,13 +9,12 @@ import SwiftUI
 
 struct IngredientsView: View {
     @EnvironmentObject var ingredientsVM: IngredientsViewModel
-    @State private var searchText = ""
     
     var body: some View {
         NavigationStack {
             VStack {
                     List {
-                        if searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        if ingredientsVM.ingredientSearch.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                             ForEach(Ingredient.Categories.allCases, id:\.self) { category in
                                 Section {
                                     ForEach(ingredientsVM.ingredients.filter {$0.category == category}.sorted {$0.name < $1.name}) { ingredient in
@@ -60,7 +59,7 @@ struct IngredientsView: View {
                         
                     }
             }
-            .searchable(text: $searchText, prompt: "Search Ingredient")
+            .searchable(text: $ingredientsVM.ingredientSearch, prompt: "Search Ingredient")
             .navigationTitle("My Ingredients")
             .toolbar {
                 Button {
@@ -80,7 +79,7 @@ struct IngredientsView: View {
     }
     
     var filteredIngredients: [Ingredient?] {
-        ingredientsVM.ingredients.filter { $0.name.contains(searchText) }
+        ingredientsVM.ingredients.filter { $0.name.contains(ingredientsVM.ingredientSearch) }
     }
     
 }

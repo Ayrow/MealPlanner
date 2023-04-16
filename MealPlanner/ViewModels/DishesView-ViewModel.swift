@@ -12,6 +12,7 @@ import SwiftUI
         
         @Published private(set) var allDishes: [Dish]
         @Published var showAddDishSheet = false
+        @Published var searchDishes = ""
         
         let savedPathForDishes = FileManager.documentsDirectory.appendingPathComponent("savedRecipes")
         
