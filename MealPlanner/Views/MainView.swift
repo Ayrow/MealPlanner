@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-enum Days: String, CaseIterable {
-    case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
-}
-
 struct MainView: View {
     @StateObject var viewModel = MainViewViewModel()
     @EnvironmentObject var dishesVM: DishesViewViewModel
+    
+    @State private var showConfirmationAlert = false
+    
     @State private var showPickerDishView = false
     @State private var tempDay = MealsPlan.DaysOfWeek.Monday
     @State private var tempMealtime = MealsPlan.Mealtime.Lunch
@@ -61,10 +60,16 @@ struct MainView: View {
                 .navigationTitle("Meal Planner")
                 .toolbar {
                     Button("Clear All"){
-                        viewModel.weekMeals.reset()
+                        showConfirmationAlert.toggle()
                     }
                     .disabled(viewModel.checkIfNoMealPlanned())
                 }
+                .alert("Are you sure?", isPresented: $showConfirmationAlert, actions: {
+                    Button("Cancel", role: .cancel){}
+                    Button("Delete", role: .destructive){
+                        viewModel.weekMeals.reset()
+                    }
+                })
                 .sheet(isPresented: $showPickerDishView) {
                     NavigationView {
                         PickerDishView(day: tempDay, mealTime: tempMealtime){ dish in
@@ -75,6 +80,7 @@ struct MainView: View {
                 .sheet(isPresented: $showDishDetailsSheet) {
                     DishDetailsView(dish: viewModel.weekMeals[tempDay, tempMealtime]!)
                 }
+                
         }
     }
     
