@@ -11,6 +11,7 @@ struct DishView: View {
     @EnvironmentObject var dishesVM: DishesViewViewModel
     @State var mealToEdit = Dish(name: "", ingredients: [])
     let emptyMealData = Dish(name: "", ingredients: [])
+    @State private var showConfirmationAlert = false
     
     var body: some View {
         NavigationStack {
@@ -26,9 +27,15 @@ struct DishView: View {
                             } label: {
                                 Text(meal.name)
                             }
+                            .alert("Are you sure?", isPresented: $showConfirmationAlert, actions: {
+                                Button("Cancel", role: .cancel){}
+                                Button("Delete", role: .destructive){
+                                    dishesVM.deleteDish(meal)
+                                }
+                            })
                             .swipeActions {
                                 Button(role: .destructive) {
-                                    dishesVM.deleteDish(meal)
+                                    showConfirmationAlert.toggle()
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
