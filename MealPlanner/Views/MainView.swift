@@ -11,7 +11,7 @@ struct MainView: View {
     @StateObject var viewModel = MainViewViewModel()
     @EnvironmentObject var dishesVM: DishesViewViewModel
     
-    @State private var showConfirmationAlert = false
+    @State private var showConfirmationDialog = false
     
     @State private var showPickerDishView = false
     @State private var tempDay = MealsPlan.DaysOfWeek.Monday
@@ -60,15 +60,17 @@ struct MainView: View {
                 .navigationTitle("Meal Planner")
                 .toolbar {
                     Button("Clear All"){
-                        showConfirmationAlert.toggle()
+                        showConfirmationDialog.toggle()
                     }
                     .disabled(viewModel.checkIfNoMealPlanned())
                 }
-                .alert("Are you sure?", isPresented: $showConfirmationAlert, actions: {
+                .confirmationDialog("Are you sure?", isPresented: $showConfirmationDialog, actions: {
                     Button("Cancel", role: .cancel){}
                     Button("Delete", role: .destructive){
                         viewModel.weekMeals.reset()
                     }
+                }, message: {
+                    Text("Are you sure?")
                 })
                 .sheet(isPresented: $showPickerDishView) {
                     NavigationView {
