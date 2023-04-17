@@ -38,6 +38,7 @@ struct MainView: View {
                                             Text(viewModel.weekMeals[day, mealTime]?.name ?? "Pick a Dish")
                                             Image(systemName: "chevron.right")
                                         }
+                                        .foregroundColor((viewModel.weekMeals[day, mealTime] != nil) ? Color.green : Color.blue)
                                     }
                                 }
                                 .contextMenu {
