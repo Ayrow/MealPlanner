@@ -31,4 +31,15 @@ import SwiftUI
         }
     }
     
+    func checkIfNoMealPlanned() -> Bool {
+        for day in MealsPlan.DaysOfWeek.allCases {
+            for mealtime in MealsPlan.Mealtime.allCases {
+                if weekMeals[day, mealtime] != nil {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
 }

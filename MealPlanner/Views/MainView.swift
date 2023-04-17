@@ -63,6 +63,7 @@ struct MainView: View {
                     Button("Clear All"){
                         viewModel.weekMeals.reset()
                     }
+                    .disabled(viewModel.checkIfNoMealPlanned())
                 }
                 .sheet(isPresented: $showPickerDishView) {
                     NavigationView {
