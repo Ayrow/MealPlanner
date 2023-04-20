@@ -11,9 +11,6 @@ struct DishDetailsView: View {
     var dish: Dish
     @EnvironmentObject var dishesVM: DishesViewViewModel
     
-    @State private var isEditing = false
-    @State private var tempDish: Dish = Dish.example
-    
     var body: some View {
         
         Form {
@@ -49,26 +46,6 @@ struct DishDetailsView: View {
                 Text("Recipe Guide")
             }
             
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                if isEditing {
-                    Button("Cancel") {
-                        isEditing = false
-                    }
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if isEditing {
-                    Button("Save") {
-                        //
-                    }
-                } else {
-                    Button("Edit") {
-                        isEditing = true
-                    }
-                }
-            }
         }
         .navigationTitle(dish.name)
         
