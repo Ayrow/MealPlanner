@@ -34,7 +34,7 @@ struct MainView: View {
                                         showPickerDishView.toggle()
                                     } label: {
                                         HStack {
-                                            Text(viewModel.weekMeals[day, mealTime]?.name ?? "Pick a Dish")
+                                            Text(viewModel.weekMeals[day, mealTime]?.name ?? "")
                                             Image(systemName: "chevron.right")
                                         }
                                         .foregroundColor((viewModel.weekMeals[day, mealTime] != nil) ? Color.green : Color.blue)

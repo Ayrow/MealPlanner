@@ -12,7 +12,7 @@ struct PickerDishView: View {
     @EnvironmentObject var dishesVM: DishesViewViewModel
     @ObservedObject var viewModel = MainViewViewModel()
     
-    var onSave: (Dish) -> Void
+    var onSave: (Dish?) -> Void
     var day: MealsPlan.DaysOfWeek
     var mealTime: MealsPlan.Mealtime
     
@@ -26,6 +26,8 @@ struct PickerDishView: View {
                     Button {
                         if viewModel.weekMeals[day, mealTime]?.name == dish?.name {
                             viewModel.weekMeals[day, mealTime] = nil
+                            onSave(nil)
+                            dismiss()
                         } else {
                             onSave(dish!)
                             dismiss()
@@ -49,7 +51,7 @@ struct PickerDishView: View {
                     }
             }
             }
-           .navigationTitle("Pick a meal")
+           .navigationTitle("Pick a Dish")
            .toolbar {
                ToolbarItem(placement: .navigationBarLeading) {
                    Button("Cancel"){dismiss()}
@@ -58,7 +60,7 @@ struct PickerDishView: View {
            }
            .searchable(text: $dishesVM.searchDishes, prompt: "Search for Dish")
         }
-    init(day: MealsPlan.DaysOfWeek, mealTime: MealsPlan.Mealtime, onSave: @escaping (Dish) -> Void) {
+    init(day: MealsPlan.DaysOfWeek, mealTime: MealsPlan.Mealtime, onSave: @escaping (Dish?) -> Void) {
         self.onSave = onSave
         self.day = day
         self.mealTime = mealTime
