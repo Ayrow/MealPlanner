@@ -22,7 +22,7 @@ struct DishView: View {
                         ForEach(filteredDishes.sorted(), id:\.id) { meal in
                             NavigationLink {
                                 NavigationView {
-                                    DishDetailsView(dish: meal)
+                                    DishDetailsView(dish: meal) 
                                 }
                             } label: {
                                 Text(meal.name)
