@@ -29,8 +29,8 @@ struct AddIngredientView: View {
                         Text(LocalizedStringKey(category.rawValue))
                     }
                 } label: {
-                    Label("Select one below", systemImage: "hand.point.down")
-                        .font(.title2)
+                    Label("Select a category", systemImage: "hand.point.down")
+                        .font(.title3.bold())
                 }
                 .pickerStyle(.inline)
                 

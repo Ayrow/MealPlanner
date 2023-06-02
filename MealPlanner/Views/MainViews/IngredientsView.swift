@@ -69,7 +69,7 @@ struct IngredientsView: View {
                 }
             }
             .sheet(isPresented: $ingredientsVM.showAddIngredientSheet) {
-                NavigationView {
+                NavigationStack {
                     AddIngredientView(ingredient: Ingredient(name: "", category: Ingredient.Categories.Others)) { newIngredient in
                         ingredientsVM.addIngredient(newIngredient)
                     }

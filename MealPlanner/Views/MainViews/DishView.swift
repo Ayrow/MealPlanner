@@ -21,7 +21,7 @@ struct DishView: View {
                     } else {
                         ForEach(filteredDishes.sorted(), id:\.id) { meal in
                             NavigationLink {
-                                NavigationView {
+                                NavigationStack {
                                     DishDetailsView(dish: meal) 
                                 }
                             } label: {
@@ -69,7 +69,7 @@ struct DishView: View {
                 }
             }
             .sheet(isPresented: $dishesVM.showAddDishSheet) {
-                NavigationView {
+                NavigationStack {
                     AddDishView(dish: mealToEdit){ newMeal in
                         mealToEdit = emptyMealData
                         dishesVM.addDish(newMeal)

@@ -78,7 +78,7 @@ struct AddDishView: View {
             }
         }
         .sheet(isPresented: $showIngredientsPickerSheet, content: {
-            NavigationView {
+            NavigationStack {
                 PickerIngredientsView(ingredientsRecipe: $ingredientsRecipe)
             }
         })
@@ -92,6 +92,10 @@ struct AddDishView: View {
         _name = State(initialValue: dish.name)
         _recipe = State(initialValue: dish.recipe ?? "")
         _ingredientsRecipe = State(initialValue: dish.ingredients)
+    }
+    
+    
+    func fetchRecipe() {
     }
     
 }

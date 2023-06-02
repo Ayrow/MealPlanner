@@ -70,7 +70,8 @@ struct PickerDishView: View {
         if dishesVM.searchDishes.isEmpty {
             return dishesVM.allDishes
         } else {
-            return dishesVM.allDishes.filter { $0.name.contains(dishesVM.searchDishes) }.sorted()
+            return dishesVM.allDishes.filter { $0.name.contains(dishesVM.searchDishes)
+            }.sorted()
         }
     }
     

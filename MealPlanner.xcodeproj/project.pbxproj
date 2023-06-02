@@ -106,16 +106,8 @@
 		9404F9F129E559FC0097F270 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9404F9E529E5554B0097F270 /* ContentView.swift */,
-				9404F9FE29E564500097F270 /* LaunchScreen.swift */,
-				9404F9FC29E564400097F270 /* MainView.swift */,
-				9404FA0829E56E5E0097F270 /* DishView.swift */,
-				9404FA1429E57B250097F270 /* AddDishView.swift */,
-				94B8593E29E9533500AB3D73 /* PickerIngredientsView.swift */,
-				94D3574029E9B21400F651D4 /* PickerDishView.swift */,
-				94603F7C29E8136E00AA56F1 /* AddIngredientView.swift */,
-				94603F7A29E8075C00AA56F1 /* IngredientsView.swift */,
-				9434D4EA29E70B32007107EE /* DishDetailsView.swift */,
+				944667482A2A23BD00705DFC /* SupportingViews */,
+				944667472A2A237B00705DFC /* MainViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +138,30 @@
 				9404FA0429E569DF0097F270 /* Localizable.strings */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		944667472A2A237B00705DFC /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				94603F7A29E8075C00AA56F1 /* IngredientsView.swift */,
+				9404F9E529E5554B0097F270 /* ContentView.swift */,
+				9404F9FE29E564500097F270 /* LaunchScreen.swift */,
+				9404F9FC29E564400097F270 /* MainView.swift */,
+				9404FA0829E56E5E0097F270 /* DishView.swift */,
+			);
+			path = MainViews;
+			sourceTree = "<group>";
+		};
+		944667482A2A23BD00705DFC /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				9404FA1429E57B250097F270 /* AddDishView.swift */,
+				94B8593E29E9533500AB3D73 /* PickerIngredientsView.swift */,
+				94D3574029E9B21400F651D4 /* PickerDishView.swift */,
+				94603F7C29E8136E00AA56F1 /* AddIngredientView.swift */,
+				9434D4EA29E70B32007107EE /* DishDetailsView.swift */,
+			);
+			path = SupportingViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +206,7 @@
 			knownRegions = (
 				en,
 				fr,
+				Base,
 			);
 			mainGroup = 9404F9D729E5554B0097F270;
 			productRefGroup = 9404F9E129E5554B0097F270 /* Products */;

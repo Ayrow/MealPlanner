@@ -13,7 +13,6 @@ class IngredientsViewModel: ObservableObject {
     @Published var ingredientSearch = ""
     
     let savedPath = FileManager.documentsDirectory.appendingPathComponent("savedIngredients")
-    
     init() {
         do {
             let data = try Data(contentsOf: savedPath)
